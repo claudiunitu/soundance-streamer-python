@@ -5,6 +5,7 @@ from typing import List
 from pydub import AudioSegment
 from pydub.utils import ratio_to_db
 
+# crossfade face probleme. fara crossfade merge
 
 class SampleSplittingSegmentMap:
     def __init__(
@@ -12,18 +13,23 @@ class SampleSplittingSegmentMap:
             split_start_at_included: int | None,
             split_end_at_included: int | None,
             fade_from: int | None,
-            fade_to: int | None):
+            fade_to: int | None,
+            sample_concat_crossfade_seconds: int | None):
         self.split_start_at_included = split_start_at_included
         self.split_end_at_included = split_end_at_included
         self.fade_from = fade_from
         self.fade_to = fade_to
+        self.sample_concat_crossfade_seconds = sample_concat_crossfade_seconds
 
 
 def create_soundtrack(
         samples_variations_filenames: List[str],
+        max_volume_gain_db: int,
+        min_volume_gain_db: int,
         max_length_seconds: int,
         fading_timeframe_seconds_min: int,
-        fading_timeframe_seconds_max: int):
+        fading_timeframe_seconds_max: int,
+        sample_concat_crossfade_seconds: int):
 
     # Initialize an empty audio segment with 0 duration for storing the concatenated sample
     original_concatenated_sample = AudioSegment.silent(duration=0)
@@ -38,8 +44,11 @@ def create_soundtrack(
 
         # pick random sample variation to concatenate the final audio data
         random_sample_variation_index = random.randint(0, len(samples_variations_filenames)-1)
-        original_concatenated_sample += sample_variations_audio_segments[random_sample_variation_index]
-        print(random_sample_variation_index, len(samples_variations_filenames))
+
+        if len(original_concatenated_sample) < sample_concat_crossfade_seconds or len(sample_variations_audio_segments[random_sample_variation_index]) < sample_concat_crossfade_seconds:
+
+            sample_concat_crossfade_seconds = min(len(original_concatenated_sample), len(sample_variations_audio_segments[random_sample_variation_index]))
+        original_concatenated_sample += original_concatenated_sample.append(sample_variations_audio_segments[random_sample_variation_index], crossfade=sample_concat_crossfade_seconds)
 
     # crop processed sample at exact processedSampleMaxLength
     original_concatenated_sample = original_concatenated_sample[:processed_sample_milliseconds_length]
@@ -55,10 +64,6 @@ def create_soundtrack(
     max_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_max * 1000
     min_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_min * 1000
 
-    # each split segment will be able to fade to specified values
-    max_volume_gain_db = 0
-    min_volume_gain_db = -30
-
     # fill the mapping array with maximum elements that the algorithm can possibly fill
     # (if it always chooses minimum random intervals when it splits originalConcatenatedSample into segments )
     maximum_hypotetical_possible_sample_segments = (
@@ -68,7 +73,8 @@ def create_soundtrack(
             split_start_at_included=None,
             split_end_at_included=None,
             fade_from=None,
-            fade_to=None
+            fade_to=None,
+            sample_concat_crossfade_seconds=sample_concat_crossfade_seconds
         ) for _ in range(maximum_hypotetical_possible_sample_segments)
     ]
 
@@ -125,7 +131,9 @@ def create_soundtrack(
     return processed_concatenated_sample
 
 
+
 def normalize_soundtrack(soundtrack: AudioSegment, num_tracks: int) -> AudioSegment:
+
     # Calculate peak level
     peak_level = soundtrack.max_dBFS
 
@@ -148,29 +156,134 @@ def normalize_soundtrack(soundtrack: AudioSegment, num_tracks: int) -> AudioSegm
 
     return normalized_soundtrack
 
-
+print(0)
 # Example: Create soundtracks
+soundtrack_0 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/0a.ogg", "./sound-samples/custom/full-spectrum-rain/0b.ogg"],
+    max_volume_gain_db=0,
+    min_volume_gain_db=-30,
+    max_length_seconds=60 * 60,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=1
+)
+print(1)
 soundtrack_1 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/demo/sample1a.ogg", "./sound-samples/demo/sample1b.ogg"],
-    max_length_seconds=2 * 60,
-    fading_timeframe_seconds_min=2,
-    fading_timeframe_seconds_max=5
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/1a.ogg", "./sound-samples/custom/full-spectrum-rain/1b.ogg"],
+    max_length_seconds=60 * 60,
+    max_volume_gain_db=0,
+    min_volume_gain_db=-30,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=1
+)
+print(2)
+soundtrack_2 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/2a.ogg", "./sound-samples/custom/full-spectrum-rain/2b.ogg"],
+    max_length_seconds=60 * 60,
+    max_volume_gain_db=-50,
+    min_volume_gain_db=-90,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(3)
+soundtrack_3 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/3a.ogg", "./sound-samples/custom/full-spectrum-rain/3b.ogg"],
+    max_length_seconds=60 * 60,
+    max_volume_gain_db=-50,
+    min_volume_gain_db=-90,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(4)
+soundtrack_4 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/4a.ogg", "./sound-samples/custom/full-spectrum-rain/4b.ogg"],
+    max_length_seconds=60 * 60,
+    max_volume_gain_db=-20,
+    min_volume_gain_db=-40,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(5)
+soundtrack_5 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/5a.ogg", "./sound-samples/custom/full-spectrum-rain/5b.ogg"],
+    max_volume_gain_db=-30,
+    min_volume_gain_db=-40,
+
+    max_length_seconds=60 * 60,
+
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(6)
+soundtrack_6 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/6a.ogg", "./sound-samples/custom/full-spectrum-rain/6b.ogg"],
+    max_volume_gain_db=-30,
+    min_volume_gain_db=-50,
+    max_length_seconds=60 * 60,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(7)
+soundtrack_7 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/7a.ogg", "./sound-samples/custom/full-spectrum-rain/7b.ogg"],
+    max_volume_gain_db=-50,
+    min_volume_gain_db=-80,
+    max_length_seconds=60 * 60,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(8)
+soundtrack_8 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/8a.ogg", "./sound-samples/custom/full-spectrum-rain/8b.ogg"],
+    max_volume_gain_db=-10,
+    min_volume_gain_db=-30,
+    max_length_seconds=60 * 60,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
+)
+print(9)
+soundtrack_9 = create_soundtrack(
+    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/9a.ogg", "./sound-samples/custom/full-spectrum-rain/9b.ogg"],
+    max_volume_gain_db=-10,
+    min_volume_gain_db=-30,
+    max_length_seconds=60 * 60,
+    fading_timeframe_seconds_min=5 * 60,
+    fading_timeframe_seconds_max=10 * 60,
+    sample_concat_crossfade_seconds=3
 )
 
-soundtrack_2 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/demo/sample2a.ogg", "./sound-samples/demo/sample2b.ogg"],
-    max_length_seconds=2 * 60,
-    fading_timeframe_seconds_min=2,
-    fading_timeframe_seconds_max=5
-)
 
 # Normalize both soundtracks before mixing
-num_soundtracks = 2  # Adjust this based on the number of soundtracks you're mixing
-normalized_soundtrack_1 = normalize_soundtrack(soundtrack_1, num_soundtracks)
-normalized_soundtrack_2 = normalize_soundtrack(soundtrack_2, num_soundtracks)
+num_soundtracks = 10  # Adjust this based on the number of soundtracks you're mixing
+normalized_soundtrack_1 = normalize_soundtrack(soundtrack_0, num_soundtracks)
+normalized_soundtrack_2 = normalize_soundtrack(soundtrack_1, num_soundtracks)
+normalized_soundtrack_3 = normalize_soundtrack(soundtrack_3, num_soundtracks)
+normalized_soundtrack_4 = normalize_soundtrack(soundtrack_4, num_soundtracks)
+normalized_soundtrack_5 = normalize_soundtrack(soundtrack_5, num_soundtracks)
+normalized_soundtrack_6 = normalize_soundtrack(soundtrack_6, num_soundtracks)
+normalized_soundtrack_7 = normalize_soundtrack(soundtrack_7, num_soundtracks)
+normalized_soundtrack_8 = normalize_soundtrack(soundtrack_8, num_soundtracks)
+normalized_soundtrack_9 = normalize_soundtrack(soundtrack_9, num_soundtracks)
 
 # Mix the normalized soundtracks
-final_track = normalized_soundtrack_1.overlay(normalized_soundtrack_2)
+final_track = (normalized_soundtrack_1
+                .overlay(normalized_soundtrack_2)
+                .overlay(normalized_soundtrack_3)
+                .overlay(normalized_soundtrack_4)
+                .overlay(normalized_soundtrack_5)
+                .overlay(normalized_soundtrack_6)
+                .overlay(normalized_soundtrack_7)
+                .overlay(normalized_soundtrack_8)
+                .overlay(normalized_soundtrack_9))
+
 
 # Export the final track
 final_track.export("processedConcatenatedSample.ogg", format="ogg")
