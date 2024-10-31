@@ -1,0 +1,148 @@
+{
+  "lengthMs": 3600000,
+  "bitDepth": 32,
+  "sampleRate": 44100,
+  "format": "adts",
+  "sampleDataConfig": [
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/0a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/0b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 200,
+        "minVolRatio": 0.46,
+        "maxVolRatio": 0.8,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/1a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/1b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 8000,
+        "minVolRatio": 0.25,
+        "maxVolRatio": 0.45,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/2a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/2b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 6000,
+        "minVolRatio": 0.1,
+        "maxVolRatio": 0.3,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/3a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/3b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 4500,
+        "minVolRatio": 0.05,
+        "maxVolRatio": 0.23,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/4a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/4b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 6000,
+        "minVolRatio": 0.28,
+        "maxVolRatio": 0.65,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/5a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/5b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 5000,
+        "minVolRatio": 0.35,
+        "maxVolRatio": 0.55,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/6a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/6b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 10000,
+        "minVolRatio": 0.3,
+        "maxVolRatio": 0.5,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/7a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/7b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 3000,
+        "minVolRatio": 0.25,
+        "maxVolRatio": 0.45,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/8a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/8b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 9000,
+        "minVolRatio": 0.22,
+        "maxVolRatio": 0.42,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    },
+    {
+      "variationFilePath": [
+        "./sound-samples/custom/rain-on-a-tent/9a.ogg",
+        "./sound-samples/custom/rain-on-a-tent/9b.ogg"
+      ],
+      "params": {
+        "stitchingMethod": "JOIN_WITH_OVERLAY",
+        "concatOverlayMs": 4000,
+        "minVolRatio": 0.17,
+        "maxVolRatio": 0.37,
+        "minTimeframeLengthMs": 60000,
+        "maxTimeframeLengthMs": 240000
+      }
+    }
+  ]
+}

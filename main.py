@@ -1,15 +1,14 @@
+import json
+import math
 import random
 from typing import List
 from pydub import AudioSegment
 from enum import Enum
 
-FINAL_TRACK_BIT_DEPTH = 32
-FINAL_TRACK_SAMPLE_RATE = 44100
+from pydub.utils import ratio_to_db
 
-
-class SampleStitchingMethod(Enum):
-    JOIN_WITH_OVERLAY = 2
-    JOIN_WITH_CROSSFADE = 3
+# FINAL_TRACK_BIT_DEPTH = 32
+# FINAL_TRACK_SAMPLE_RATE = 44100
 
 
 class SampleSplittingSegmentMap:
@@ -61,16 +60,18 @@ def create_soundtrack(
         fading_timeframe_seconds_min: int,
         fading_timeframe_seconds_max: int,
         sample_concat_overlay_seconds: float,
-        sample_stitching_method: SampleStitchingMethod,
+        sample_stitching_method: str,  # "JOIN_WITH_OVERLAY", "JOIN_WITH_CROSSFADE"
         bit_depth: int, sample_rate: int):
     # Initialize an empty audio segment with 0 duration for storing the concatenated sample
-    original_concatenated_sample = AudioSegment.silent(duration=0)
+    original_concatenated_sample = AudioSegment.silent(duration=0, frame_rate=FINAL_TRACK_SAMPLE_RATE)
     original_concatenated_sample.set_frame_rate(sample_rate)
     original_concatenated_sample.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
-    # Load the OGG sample (replace 'sample.ogg' with your actual file path)
-    sample_variations_audio_segments: List[AudioSegment] = [AudioSegment.from_ogg(variation_filename) for
+    # Load sample
+    sample_variations_audio_segments: List[AudioSegment] = [AudioSegment.from_file(variation_filename) for
                                                             variation_filename in samples_variations_filenames]
+
+
 
     print(samples_variations_filenames[0] + ": bit depth " + str(get_bit_depth_from_audio_segment(sample_variations_audio_segments[0])) + ", sample rate: " + str(
         get_sample_rate(sample_variations_audio_segments[0])))
@@ -91,11 +92,11 @@ def create_soundtrack(
         if len(original_concatenated_sample) - 1 < safe_sample_concat_overlay_milliseconds:
             safe_sample_concat_overlay_milliseconds = 0
 
-        if sample_stitching_method == SampleStitchingMethod.JOIN_WITH_CROSSFADE:
+        if sample_stitching_method == "JOIN_WITH_CROSSFADE":
             original_concatenated_sample = original_concatenated_sample.append(
                 sample_variations_audio_segments[random_sample_variation_index],
                 crossfade=safe_sample_concat_overlay_milliseconds)
-        elif sample_stitching_method == SampleStitchingMethod.JOIN_WITH_OVERLAY:
+        elif sample_stitching_method == "JOIN_WITH_OVERLAY":
 
             # Determine the position for the overlay
             overlay_position = len(original_concatenated_sample) - safe_sample_concat_overlay_milliseconds
@@ -107,7 +108,7 @@ def create_soundtrack(
             overlay_length = len(overlay_sample)
 
             silence_duration = overlay_length - safe_sample_concat_overlay_milliseconds
-            silence_segment = AudioSegment.silent(duration=silence_duration)
+            silence_segment = AudioSegment.silent(duration=silence_duration, frame_rate=FINAL_TRACK_SAMPLE_RATE)
             silence_segment.set_frame_rate(sample_rate)
             silence_segment.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
@@ -120,14 +121,17 @@ def create_soundtrack(
         else:
             return Exception("Unknown stitching method")
 
+
     # crop processed sample at exact processedSampleMaxLength
     original_concatenated_sample = original_concatenated_sample[:processed_sample_milliseconds_length]
+
+
 
     # Process originalConcatenatedSample by taking parts out of it and applying
     # fading effects then adding it to processedConcatenatedSample
 
     # Initialize an empty audio segment with 0 duration for concatenating processed parts of originalConcatenatedSample
-    processed_concatenated_sample = AudioSegment.silent(duration=0)
+    processed_concatenated_sample = AudioSegment.silent(duration=0, frame_rate=FINAL_TRACK_SAMPLE_RATE)
     processed_concatenated_sample.set_frame_rate(sample_rate)
     processed_concatenated_sample.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
@@ -136,9 +140,12 @@ def create_soundtrack(
     max_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_max * 1000
     min_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_min * 1000
 
+    if(processed_sample_milliseconds_length <= min_sample_segment_timeframe_milliseconds):
+        raise Exception(samples_variations_filenames[0] + ": the sample length is shorter than its minimum fading timeframe")
+
     # fill the mapping array with maximum elements that the algorithm can possibly fill
     # (if it always chooses minimum random intervals when it splits originalConcatenatedSample into segments )
-    maximum_hypotetical_possible_sample_segments = (
+    maximum_hypotetical_possible_sample_segments = int(
             processed_sample_milliseconds_length // min_sample_segment_timeframe_milliseconds)
     sample_processing_mapping: List[SampleSplittingSegmentMap] = [
         SampleSplittingSegmentMap(
@@ -199,12 +206,13 @@ def create_soundtrack(
                 start=0,
                 end=len(sample_segment) - 1)
 
+
     return processed_concatenated_sample
 
 
-def normalize_soundtrack(soundtrack: AudioSegment, num_tracks: int) -> AudioSegment:
+def normalize_soundtrack(audio_track: AudioSegment, num_tracks: int) -> AudioSegment:
     # Calculate peak level
-    peak_level = soundtrack.max_dBFS
+    peak_level = audio_track.max_dBFS
 
     # Calculate normalization gain
     # Set a maximum peak level (in dB)
@@ -221,182 +229,68 @@ def normalize_soundtrack(soundtrack: AudioSegment, num_tracks: int) -> AudioSegm
         normalization_gain = 0  # No gain adjustment needed
 
     # Normalize the soundtrack
-    normalized_soundtrack = soundtrack.apply_gain(-normalization_gain)
+    normalized_soundtrack = audio_track.apply_gain(-normalization_gain)
 
     return normalized_soundtrack
 
 
-final_length_seconds = 5 * 60
+def safe_ratio_to_db(ratio):
+    if ratio == 0:
+        return -120.0  # or some large negative value representing silence
+    if ratio < 0:
+        raise ValueError("Ratio must be non-negative.")
 
-print(0)
-# Example: Create soundtracks
-soundtrack_0 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/0a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/0b.ogg"],
-    max_volume_gain_db=0,
-    min_volume_gain_db=-60,
-    max_length_seconds=final_length_seconds,
-    fading_timeframe_seconds_min=10,
-    fading_timeframe_seconds_max=20,
-    sample_concat_overlay_seconds=0.2,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(1)
-soundtrack_1 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/1a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/1b.ogg"],
-    max_length_seconds=final_length_seconds,
-    max_volume_gain_db=-15,
-    min_volume_gain_db=-30,
-    fading_timeframe_seconds_min=5 * 60,
-    fading_timeframe_seconds_max=20 * 60,
-    sample_concat_overlay_seconds=8,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(2)
-soundtrack_2 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/2a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/2b.ogg"],
-    max_length_seconds=final_length_seconds,
-    max_volume_gain_db=-30,
-    min_volume_gain_db=-90,
-    fading_timeframe_seconds_min=5 * 60,
-    fading_timeframe_seconds_max=20 * 60,
-    sample_concat_overlay_seconds=6,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(3)
-soundtrack_3 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/3a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/3b.ogg"],
-    max_length_seconds=final_length_seconds,
-    max_volume_gain_db=-40,
-    min_volume_gain_db=-90,
-    fading_timeframe_seconds_min=1 * 60,
-    fading_timeframe_seconds_max=2 * 60,
-    sample_concat_overlay_seconds=4,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(4)
-soundtrack_4 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/4a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/4b.ogg"],
-    max_length_seconds=final_length_seconds,
-    max_volume_gain_db=-10,
-    min_volume_gain_db=-30,
-    fading_timeframe_seconds_min=5 * 60,
-    fading_timeframe_seconds_max=10 * 60,
-    sample_concat_overlay_seconds=7,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(5)
-soundtrack_5 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/5a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/5b.ogg"],
-    max_volume_gain_db=-5,
-    min_volume_gain_db=-30,
+    return math.floor(ratio_to_db(ratio))
 
-    max_length_seconds=final_length_seconds,
 
-    fading_timeframe_seconds_min=1 * 60,
-    fading_timeframe_seconds_max=5 * 60,
-    sample_concat_overlay_seconds=2.5,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(6)
-soundtrack_6 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/6a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/6b.ogg"],
-    max_volume_gain_db=-10,
-    min_volume_gain_db=-50,
-    max_length_seconds=final_length_seconds,
-    fading_timeframe_seconds_min=1 * 60,
-    fading_timeframe_seconds_max=2 * 60,
-    sample_concat_overlay_seconds=4,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(7)
-soundtrack_7 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/7a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/7b.ogg"],
-    max_volume_gain_db=-10,
-    min_volume_gain_db=-80,
-    max_length_seconds=final_length_seconds,
-    fading_timeframe_seconds_min=1 * 60,
-    fading_timeframe_seconds_max=3 * 60,
-    sample_concat_overlay_seconds=2.5,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(8)
-soundtrack_8 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/8a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/8b.ogg"],
-    max_volume_gain_db=-5,
-    min_volume_gain_db=-40,
-    max_length_seconds=final_length_seconds,
-    fading_timeframe_seconds_min=1 * 60,
-    fading_timeframe_seconds_max=6 * 60,
-    sample_concat_overlay_seconds=4,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
-print(9)
-soundtrack_9 = create_soundtrack(
-    samples_variations_filenames=["./sound-samples/custom/full-spectrum-rain/9a.ogg",
-                                  "./sound-samples/custom/full-spectrum-rain/9b.ogg"],
-    max_volume_gain_db=-5,
-    min_volume_gain_db=-40,
-    max_length_seconds=final_length_seconds,
-    fading_timeframe_seconds_min=1 * 60,
-    fading_timeframe_seconds_max=4 * 60,
-    sample_concat_overlay_seconds=4,
-    sample_stitching_method=SampleStitchingMethod.JOIN_WITH_OVERLAY,
-    bit_depth=FINAL_TRACK_BIT_DEPTH,
-    sample_rate=FINAL_TRACK_SAMPLE_RATE
-)
+def audio_format_to_file_extension(audio_format: str):
+    if audio_format == "mp3":
+        return "mp3"
+    elif audio_format == "adts":
+        return "aac"
+    elif audio_format == "ogg":
+        return "ogg"
 
-# Normalize both soundtracks before mixing
-num_soundtracks = 10  # Adjust this based on the number of soundtracks you're mixing
-normalized_soundtrack_1 = normalize_soundtrack(soundtrack_0, num_soundtracks)
-normalized_soundtrack_2 = normalize_soundtrack(soundtrack_1, num_soundtracks)
-normalized_soundtrack_3 = normalize_soundtrack(soundtrack_3, num_soundtracks)
-normalized_soundtrack_4 = normalize_soundtrack(soundtrack_4, num_soundtracks)
-normalized_soundtrack_5 = normalize_soundtrack(soundtrack_5, num_soundtracks)
-normalized_soundtrack_6 = normalize_soundtrack(soundtrack_6, num_soundtracks)
-normalized_soundtrack_7 = normalize_soundtrack(soundtrack_7, num_soundtracks)
-normalized_soundtrack_8 = normalize_soundtrack(soundtrack_8, num_soundtracks)
-normalized_soundtrack_9 = normalize_soundtrack(soundtrack_9, num_soundtracks)
+with open("currentConfig.json", "r") as file:
+    jsonData = json.load(file)
 
-# Mix the normalized soundtracks
-final_track = (normalized_soundtrack_1
-               .overlay(normalized_soundtrack_2)
-               .overlay(normalized_soundtrack_3)
-               .overlay(normalized_soundtrack_4)
-               .overlay(normalized_soundtrack_5)
-               .overlay(normalized_soundtrack_6)
-               .overlay(normalized_soundtrack_7)
-               .overlay(normalized_soundtrack_8)
-               .overlay(normalized_soundtrack_9)
-               )
+    FINAL_TRACK_BIT_DEPTH = jsonData["bitDepth"]
+    FINAL_TRACK_SAMPLE_RATE = jsonData["sampleRate"]
+    final_length_seconds = int(jsonData["lengthMs"] // 1000)
+    audio_format = jsonData["format"]
+    samples_data_config = jsonData["sampleDataConfig"]
 
-print("Final track: bit depth " + str(get_bit_depth_from_audio_segment(final_track)) + ", sample rate: " + str(get_sample_rate(final_track)))
+    final_track = AudioSegment.silent(duration=final_length_seconds*1000, frame_rate=FINAL_TRACK_SAMPLE_RATE)
+    normalized_processed_sound_tracks:  List[AudioSegment] = []
 
-# Export the final track
-final_track.export("processedConcatenatedSample.ogg", format="ogg")
+    number_of_tracks = len(samples_data_config)
+
+    for i in range(number_of_tracks):
+
+        print("Creating track: " + str(i+1) + " of " + str(number_of_tracks))
+
+        current_sample_data_config = samples_data_config[i]
+        current_sample_stitching_method = current_sample_data_config["params"]["stitchingMethod"]
+        current_sample_concat_overlay_milliseconds = current_sample_data_config["params"]["concatOverlayMs"]
+
+        soundtrack = create_soundtrack(
+            samples_variations_filenames=current_sample_data_config["variationFilePath"],
+            max_volume_gain_db=safe_ratio_to_db(current_sample_data_config["params"]["maxVolRatio"]),
+            min_volume_gain_db=safe_ratio_to_db(current_sample_data_config["params"]["minVolRatio"]),
+            max_length_seconds=final_length_seconds,
+            fading_timeframe_seconds_min=int(current_sample_data_config["params"]["minTimeframeLengthMs"]/1000),
+            fading_timeframe_seconds_max=int(current_sample_data_config["params"]["maxTimeframeLengthMs"]/1000),
+            sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds/1000),
+            sample_stitching_method=current_sample_stitching_method,
+            bit_depth=FINAL_TRACK_BIT_DEPTH,
+            sample_rate=FINAL_TRACK_SAMPLE_RATE
+        )
+
+
+        final_track = final_track.overlay(normalize_soundtrack(soundtrack, number_of_tracks))
+
+
+    print("Final track: bit depth " + str(get_bit_depth_from_audio_segment(final_track)) + ", sample rate: " + str(get_sample_rate(final_track)))
+
+    # Export the final track
+    final_track.export("processedConcatenatedSample."+audio_format_to_file_extension(audio_format), format=audio_format)
