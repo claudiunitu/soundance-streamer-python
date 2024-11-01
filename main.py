@@ -66,6 +66,10 @@ def create_soundtrack(
     sample_variations_audio_segments: List[AudioSegment] = [AudioSegment.from_file(variation_filename) for
                                                             variation_filename in samples_variations_filenames]
 
+    for j in range(len(sample_variations_audio_segments)):
+        sample_variations_audio_segments[j] = sample_variations_audio_segments[j].set_frame_rate(sample_rate)
+        sample_variations_audio_segments[j] = sample_variations_audio_segments[j].set_sample_width(translate_bit_depth_for_pydub(bit_depth))
+
     print(samples_variations_filenames[0] + ": bit depth " + str(get_bit_depth_from_audio_segment(sample_variations_audio_segments[0])) + ", sample rate: " + str(
         get_sample_rate(sample_variations_audio_segments[0])))
 
@@ -240,7 +244,12 @@ def audio_format_to_file_extension(audio_format: str):
         return "aac"
     elif audio_format == "ogg":
         return "ogg"
+    elif audio_format == "wav":
+        return "wav"
 
+
+PROCESSING_BIT_DEPTH = 32
+PROCESSING_SAMPLE_RATE = 44100
 
 with open("currentConfig.json", "r") as file:
     jsonData = json.load(file)
@@ -251,7 +260,7 @@ with open("currentConfig.json", "r") as file:
     audio_format = jsonData["format"]
     samples_data_config = jsonData["sampleDataConfig"]
 
-    final_track = AudioSegment.silent(duration=final_length_seconds*1000, frame_rate=FINAL_TRACK_SAMPLE_RATE)
+    final_track = AudioSegment.silent(duration=final_length_seconds*1000, frame_rate=PROCESSING_SAMPLE_RATE)
     normalized_processed_sound_tracks:  List[AudioSegment] = []
 
     number_of_tracks = len(samples_data_config)
@@ -273,15 +282,28 @@ with open("currentConfig.json", "r") as file:
             fading_timeframe_seconds_max=int(current_sample_data_config["params"]["maxTimeframeLengthMs"]/1000),
             sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds/1000),
             sample_stitching_method=current_sample_stitching_method,
-            bit_depth=32,  # set maximum bit depth for processing
-            sample_rate=44100
+            bit_depth=PROCESSING_BIT_DEPTH,  # set maximum bit depth for processing
+            sample_rate=PROCESSING_SAMPLE_RATE
         )
 
         final_track = final_track.overlay(normalize_soundtrack(soundtrack, number_of_tracks))
 
-    final_track.set_frame_rate(FINAL_TRACK_SAMPLE_RATE)
-    final_track.set_sample_width(translate_bit_depth_for_pydub(FINAL_TRACK_BIT_DEPTH))
-    print("Final track: bit depth " + str(get_bit_depth_from_audio_segment(final_track)) + ", sample rate: " + str(get_sample_rate(final_track)))
+    if PROCESSING_SAMPLE_RATE != FINAL_TRACK_SAMPLE_RATE:
+        print("Adjusting final soundtrack sample rate to: " + str(FINAL_TRACK_SAMPLE_RATE) + "...")
+        final_track = final_track.set_frame_rate(FINAL_TRACK_SAMPLE_RATE)
+    else:
+        print("Final soundtrack sample rate is set to: " + str(FINAL_TRACK_SAMPLE_RATE))
+
+    if PROCESSING_BIT_DEPTH != FINAL_TRACK_BIT_DEPTH:
+        print("Adjusting final soundtrack bit depth to: " + str(FINAL_TRACK_BIT_DEPTH) + "...")
+        final_track = final_track.set_sample_width(translate_bit_depth_for_pydub(FINAL_TRACK_BIT_DEPTH))
+    else:
+        print("Final soundtrack bit depth is set to: " + str(FINAL_TRACK_BIT_DEPTH))
+
+    print(
+        "Final track check: bit depth " + str(get_bit_depth_from_audio_segment(final_track)) + ", sample rate: " + str(
+            get_sample_rate(final_track)))
+
     print("Exporting...")
     # Export the final track
     final_track.export("processedConcatenatedSample."+audio_format_to_file_extension(audio_format), format=audio_format)

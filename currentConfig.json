@@ -2,7 +2,7 @@
   "lengthMs": 3600000,
   "bitDepth": 16,
   "sampleRate": 44100,
-  "format": "adts",
+  "format": "wav",
   "sampleDataConfig": [
     {
       "variationFilePath": [
@@ -69,9 +69,9 @@
         "stitchingMethod": "JOIN_WITH_OVERLAY",
         "concatOverlayMs": 4000,
         "minVolRatio": 0.07,
-        "maxVolRatio": 0.5,
-        "minTimeframeLengthMs": 60000,
-        "maxTimeframeLengthMs": 240000
+        "maxVolRatio": 0.37,
+        "minTimeframeLengthMs": 10000,
+        "maxTimeframeLengthMs": 12000
       }
     },
     {
@@ -112,8 +112,8 @@
         "concatOverlayMs": 4000,
         "minVolRatio": 0.02,
         "maxVolRatio": 0.32,
-        "minTimeframeLengthMs": 60000,
-        "maxTimeframeLengthMs": 240000
+        "minTimeframeLengthMs": 20000,
+        "maxTimeframeLengthMs": 30000
       }
     },
     {
@@ -126,8 +126,8 @@
         "concatOverlayMs": 4000,
         "minVolRatio": 0,
         "maxVolRatio": 0.42,
-        "minTimeframeLengthMs": 60000,
-        "maxTimeframeLengthMs": 240000
+        "minTimeframeLengthMs": 10000,
+        "maxTimeframeLengthMs": 60000
       }
     },
     {
@@ -139,9 +139,9 @@
         "stitchingMethod": "JOIN_WITH_OVERLAY",
         "concatOverlayMs": 5000,
         "minVolRatio": 0,
-        "maxVolRatio": 0.44,
-        "minTimeframeLengthMs": 60000,
-        "maxTimeframeLengthMs": 240000
+        "maxVolRatio": 0.38,
+        "minTimeframeLengthMs": 10000,
+        "maxTimeframeLengthMs": 60000
       }
     }
   ]
