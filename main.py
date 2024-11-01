@@ -224,9 +224,9 @@ def normalize_soundtrack(audio_track: AudioSegment, num_tracks: int) -> AudioSeg
     return normalized_soundtrack
 
 
-def safe_ratio_to_db(ratio):
+def safe_ratio_to_db(ratio) -> int:
     if ratio == 0:
-        return -120.0  # or some large negative value representing silence
+        return -120  # or some large negative value representing silence
     if ratio < 0:
         raise ValueError("Ratio must be non-negative.")
 
