@@ -3,12 +3,7 @@ import math
 import random
 from typing import List
 from pydub import AudioSegment
-from enum import Enum
-
 from pydub.utils import ratio_to_db
-
-# FINAL_TRACK_BIT_DEPTH = 32
-# FINAL_TRACK_SAMPLE_RATE = 44100
 
 
 class SampleSplittingSegmentMap:
@@ -63,15 +58,13 @@ def create_soundtrack(
         sample_stitching_method: str,  # "JOIN_WITH_OVERLAY", "JOIN_WITH_CROSSFADE"
         bit_depth: int, sample_rate: int):
     # Initialize an empty audio segment with 0 duration for storing the concatenated sample
-    original_concatenated_sample = AudioSegment.silent(duration=0, frame_rate=FINAL_TRACK_SAMPLE_RATE)
+    original_concatenated_sample = AudioSegment.silent(duration=0)
     original_concatenated_sample.set_frame_rate(sample_rate)
     original_concatenated_sample.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
     # Load sample
     sample_variations_audio_segments: List[AudioSegment] = [AudioSegment.from_file(variation_filename) for
                                                             variation_filename in samples_variations_filenames]
-
-
 
     print(samples_variations_filenames[0] + ": bit depth " + str(get_bit_depth_from_audio_segment(sample_variations_audio_segments[0])) + ", sample rate: " + str(
         get_sample_rate(sample_variations_audio_segments[0])))
@@ -108,7 +101,7 @@ def create_soundtrack(
             overlay_length = len(overlay_sample)
 
             silence_duration = overlay_length - safe_sample_concat_overlay_milliseconds
-            silence_segment = AudioSegment.silent(duration=silence_duration, frame_rate=FINAL_TRACK_SAMPLE_RATE)
+            silence_segment = AudioSegment.silent(duration=silence_duration)
             silence_segment.set_frame_rate(sample_rate)
             silence_segment.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
@@ -121,17 +114,14 @@ def create_soundtrack(
         else:
             return Exception("Unknown stitching method")
 
-
     # crop processed sample at exact processedSampleMaxLength
     original_concatenated_sample = original_concatenated_sample[:processed_sample_milliseconds_length]
-
-
 
     # Process originalConcatenatedSample by taking parts out of it and applying
     # fading effects then adding it to processedConcatenatedSample
 
     # Initialize an empty audio segment with 0 duration for concatenating processed parts of originalConcatenatedSample
-    processed_concatenated_sample = AudioSegment.silent(duration=0, frame_rate=FINAL_TRACK_SAMPLE_RATE)
+    processed_concatenated_sample = AudioSegment.silent(duration=0)
     processed_concatenated_sample.set_frame_rate(sample_rate)
     processed_concatenated_sample.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
@@ -140,7 +130,7 @@ def create_soundtrack(
     max_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_max * 1000
     min_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_min * 1000
 
-    if(processed_sample_milliseconds_length <= min_sample_segment_timeframe_milliseconds):
+    if processed_sample_milliseconds_length <= min_sample_segment_timeframe_milliseconds:
         raise Exception(samples_variations_filenames[0] + ": the sample length is shorter than its minimum fading timeframe")
 
     # fill the mapping array with maximum elements that the algorithm can possibly fill
@@ -251,6 +241,7 @@ def audio_format_to_file_extension(audio_format: str):
     elif audio_format == "ogg":
         return "ogg"
 
+
 with open("currentConfig.json", "r") as file:
     jsonData = json.load(file)
 
@@ -282,15 +273,15 @@ with open("currentConfig.json", "r") as file:
             fading_timeframe_seconds_max=int(current_sample_data_config["params"]["maxTimeframeLengthMs"]/1000),
             sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds/1000),
             sample_stitching_method=current_sample_stitching_method,
-            bit_depth=FINAL_TRACK_BIT_DEPTH,
-            sample_rate=FINAL_TRACK_SAMPLE_RATE
+            bit_depth=32,  # set maximum bit depth for processing
+            sample_rate=44100
         )
-
 
         final_track = final_track.overlay(normalize_soundtrack(soundtrack, number_of_tracks))
 
-
+    final_track.set_frame_rate(FINAL_TRACK_SAMPLE_RATE)
+    final_track.set_sample_width(translate_bit_depth_for_pydub(FINAL_TRACK_BIT_DEPTH))
     print("Final track: bit depth " + str(get_bit_depth_from_audio_segment(final_track)) + ", sample rate: " + str(get_sample_rate(final_track)))
-
+    print("Exporting...")
     # Export the final track
     final_track.export("processedConcatenatedSample."+audio_format_to_file_extension(audio_format), format=audio_format)
