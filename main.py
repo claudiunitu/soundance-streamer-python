@@ -134,8 +134,15 @@ def create_soundtrack(
     max_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_max * 1000
     min_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_min * 1000
 
-    if processed_sample_milliseconds_length <= min_sample_segment_timeframe_milliseconds:
-        raise Exception(samples_variations_filenames[0] + ": the sample length is shorter than its minimum fading timeframe")
+
+    if max_sample_segment_timeframe_milliseconds < min_sample_segment_timeframe_milliseconds:
+        raise Exception(samples_variations_filenames[0] + ": the max timeframe sample length is shorter than min timeframe sample length")
+
+    if processed_sample_milliseconds_length < min_sample_segment_timeframe_milliseconds:
+        raise Exception(samples_variations_filenames[0] + ": the final track length is shorter than its minimum fading timeframes length")
+
+    if processed_sample_milliseconds_length < max_sample_segment_timeframe_milliseconds:
+        raise Exception(samples_variations_filenames[0] + ": the final track length is shorter than the max fading timeframes length")
 
     # fill the mapping array with maximum elements that the algorithm can possibly fill
     # (if it always chooses minimum random intervals when it splits originalConcatenatedSample into segments )
@@ -204,26 +211,19 @@ def create_soundtrack(
     return processed_concatenated_sample
 
 
-def normalize_soundtrack(audio_track: AudioSegment, num_tracks: int) -> AudioSegment:
+def normalize_soundtrack(audio_track: AudioSegment) -> AudioSegment:
     # Calculate peak level
     peak_level = audio_track.max_dBFS
 
     # Calculate normalization gain
     # Set a maximum peak level (in dB)
-    max_peak_level = 0  # dBFS level at which clipping occurs
+    max_peak_level = -5  # dBFS level at which clipping occurs
 
     # Calculate the adjustment needed
-    # If peak_level is already at or above max_peak_level, we need to reduce
-    if peak_level > max_peak_level:
-        gain_reduction = peak_level - max_peak_level
-        # Apply a reduction based on the number of tracks
-        # To avoid clipping when mixed, we reduce more depending on the number of tracks
-        normalization_gain = gain_reduction + (gain_reduction / num_tracks)
-    else:
-        normalization_gain = 0  # No gain adjustment needed
+    normalization_gain = max_peak_level - peak_level
 
     # Normalize the soundtrack
-    normalized_soundtrack = audio_track.apply_gain(-normalization_gain)
+    normalized_soundtrack = audio_track.apply_gain(normalization_gain)
 
     return normalized_soundtrack
 
@@ -286,7 +286,7 @@ with open("currentConfig.json", "r") as file:
             sample_rate=PROCESSING_SAMPLE_RATE
         )
 
-        final_track = final_track.overlay(normalize_soundtrack(soundtrack, number_of_tracks))
+        final_track = final_track.overlay(normalize_soundtrack(soundtrack))
 
     if PROCESSING_SAMPLE_RATE != FINAL_TRACK_SAMPLE_RATE:
         print("Adjusting final soundtrack sample rate to: " + str(FINAL_TRACK_SAMPLE_RATE) + "...")
@@ -306,4 +306,4 @@ with open("currentConfig.json", "r") as file:
 
     print("Exporting...")
     # Export the final track
-    final_track.export("processedConcatenatedSample."+audio_format_to_file_extension(audio_format), format=audio_format)
+    final_track.export("generated/processedConcatenatedSample."+audio_format_to_file_extension(audio_format), format=audio_format)
