@@ -286,7 +286,14 @@ with open("currentConfig.json", "r") as file:
             sample_rate=PROCESSING_SAMPLE_RATE
         )
 
-        final_track = final_track.overlay(normalize_soundtrack(soundtrack))
+        # try to normalize down each track take into consideration maximum number
+        # of tracks that will be combined. Use -1db for each new track that will be overlaid.
+        # This is not bulletproof, but it reduces the risk of final track clipping
+        soundtrack = soundtrack.apply_gain(-number_of_tracks)
+
+        final_track = final_track.overlay(soundtrack)
+
+    final_track = normalize_soundtrack(final_track)
 
     if PROCESSING_SAMPLE_RATE != FINAL_TRACK_SAMPLE_RATE:
         print("Adjusting final soundtrack sample rate to: " + str(FINAL_TRACK_SAMPLE_RATE) + "...")
