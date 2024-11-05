@@ -1,9 +1,12 @@
 import json
 import math
+import os
 import random
+import time
+import warnings
 from typing import List
 from pydub import AudioSegment
-from pydub.utils import ratio_to_db
+from pydub.utils import ratio_to_db, db_to_float
 
 
 class SampleSplittingSegmentMap:
@@ -56,7 +59,8 @@ def create_soundtrack(
         fading_timeframe_seconds_max: int,
         sample_concat_overlay_seconds: float,
         sample_stitching_method: str,  # "JOIN_WITH_OVERLAY", "JOIN_WITH_CROSSFADE"
-        bit_depth: int, sample_rate: int):
+        bit_depth: int,
+        sample_rate: int):
     # Initialize an empty audio segment with 0 duration for storing the concatenated sample
     original_concatenated_sample = AudioSegment.silent(duration=0)
     original_concatenated_sample.set_frame_rate(sample_rate)
@@ -67,7 +71,23 @@ def create_soundtrack(
                                                             variation_filename in samples_variations_filenames]
 
     for j in range(len(sample_variations_audio_segments)):
-        sample_variations_audio_segments[j] = sample_variations_audio_segments[j].set_frame_rate(sample_rate)
+        found_sample_rate=get_sample_rate(sample_variations_audio_segments[j])
+        if sample_rate != found_sample_rate:
+            warnings.warn(
+                "\nDifferent sample rate detected for: {samples_variations_filename}.\n"
+                "Desired track sample rate: {desired_sample_rate}.\n"
+                "The actual sample has: {sample_actual_sample_rate}. This can cause artifacts when resampling.\n"
+                "It is recommended to keep the same sample rate as the samples that will be mixed."
+                .format(
+                    samples_variations_filename=samples_variations_filenames[j],
+                    desired_sample_rate=sample_rate,
+                    sample_actual_sample_rate=found_sample_rate
+                )
+
+            )
+            time.sleep(1)
+            print("Will resample at the desired sample rate...")
+            sample_variations_audio_segments[j] = sample_variations_audio_segments[j].set_frame_rate(sample_rate)
         sample_variations_audio_segments[j] = sample_variations_audio_segments[j].set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
     print(samples_variations_filenames[0] + ": bit depth " + str(get_bit_depth_from_audio_segment(sample_variations_audio_segments[0])) + ", sample rate: " + str(
@@ -215,15 +235,20 @@ def normalize_soundtrack(audio_track: AudioSegment) -> AudioSegment:
     # Calculate peak level
     peak_level = audio_track.max_dBFS
 
+    print("Calculated max peak level: {peak}".format(peak=peak_level))
+
     # Calculate normalization gain
     # Set a maximum peak level (in dB)
-    max_peak_level = -5  # dBFS level at which clipping occurs
+    max_peak_level = -0.1
+    print("Desired max peak level: {peak}".format(peak=max_peak_level))
 
     # Calculate the adjustment needed
     normalization_gain = max_peak_level - peak_level
+    print("Adjusting gain to: {gain}".format(gain=normalization_gain))
 
     # Normalize the soundtrack
     normalized_soundtrack = audio_track.apply_gain(normalization_gain)
+    print("Finished applying normalization gain.")
 
     return normalized_soundtrack
 
@@ -235,6 +260,25 @@ def safe_ratio_to_db(ratio) -> int:
         raise ValueError("Ratio must be non-negative.")
 
     return math.floor(ratio_to_db(ratio))
+
+
+# Calculate gain reduction needed based on dB peak levels of all tracks
+def calculate_adjusted_gain_reduction_necessary_to_avoid_clipping_when_mixed(all_tracks_max_peaks: List[float], target_peak_db: float = 0.0) -> float:
+    # Convert each peak in dB to linear amplitude ratios
+    linear_peaks = [db_to_float(peak_db) for peak_db in all_tracks_max_peaks]
+
+    # Sum peaks with an empirical adjustment factor for realistic mixing (approx 0.707 per added track)
+    combined_peak_ratio = sum([peak * 0.707 for peak in linear_peaks])
+
+    # Convert adjusted combined ratio back to dB
+    combined_peak_db = safe_ratio_to_db(combined_peak_ratio)
+
+    # Calculate gain reduction to bring combined peak down to the target peak level
+    gain_reduction = target_peak_db - combined_peak_db
+    if gain_reduction < 0:
+        return gain_reduction
+    else:
+        return 0
 
 
 def audio_format_to_file_extension(audio_format: str):
@@ -251,7 +295,10 @@ def audio_format_to_file_extension(audio_format: str):
 PROCESSING_BIT_DEPTH = 32
 PROCESSING_SAMPLE_RATE = 44100
 
+
+print("Reading config file...")
 with open("currentConfig.json", "r") as file:
+    print("Parsing json config file...")
     jsonData = json.load(file)
 
     FINAL_TRACK_BIT_DEPTH = jsonData["bitDepth"]
@@ -260,14 +307,17 @@ with open("currentConfig.json", "r") as file:
     audio_format = jsonData["format"]
     samples_data_config = jsonData["sampleDataConfig"]
 
-    final_track = AudioSegment.silent(duration=final_length_seconds*1000, frame_rate=PROCESSING_SAMPLE_RATE)
+    final_track = AudioSegment.silent(duration=final_length_seconds*1000)
+    final_track.set_frame_rate(PROCESSING_SAMPLE_RATE)
+    final_track.set_sample_width(translate_bit_depth_for_pydub(PROCESSING_BIT_DEPTH))
     normalized_processed_sound_tracks:  List[AudioSegment] = []
 
     number_of_tracks = len(samples_data_config)
 
+    print("Will process {number_of_tracks} tracks...".format(number_of_tracks=number_of_tracks))
     for i in range(number_of_tracks):
 
-        print("Creating track: " + str(i+1) + " of " + str(number_of_tracks))
+        print("Processing track: " + str(i+1) + " of " + str(number_of_tracks))
 
         current_sample_data_config = samples_data_config[i]
         current_sample_stitching_method = current_sample_data_config["params"]["stitchingMethod"]
@@ -289,10 +339,45 @@ with open("currentConfig.json", "r") as file:
         # try to normalize down each track take into consideration maximum number
         # of tracks that will be combined. Use -1db for each new track that will be overlaid.
         # This is not bulletproof, but it reduces the risk of final track clipping
-        soundtrack = soundtrack.apply_gain(-number_of_tracks)
+        # soundtrack = soundtrack.apply_gain(-number_of_tracks)
 
-        final_track = final_track.overlay(soundtrack)
+        temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
+        print("Exporting temporary track: {temp_soundtrack_filepath} ...".format(
+            temp_soundtrack_filepath=temp_soundtrack_filepath))
+        soundtrack.export(temp_soundtrack_filepath, format="wav")
+        print("Successfully exported temporary track: {temp_soundtrack_filepath}".format(
+            temp_soundtrack_filepath=temp_soundtrack_filepath))
 
+    print("Calculating the risk of clipping after mixing all tracks")
+    all_tracks_max_peaks = [0.0] * number_of_tracks
+    for i in range(number_of_tracks):
+        temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
+        track = AudioSegment.from_file(temp_soundtrack_filepath, format="wav")
+        all_tracks_max_peaks[i] = track.max_dBFS
+    # calculate gain reduction needed based on the db peak levels of all tracks (stored in all_tracks_max_peaks)
+    calculated_gain_reduction_to_apply_to_all_tracks = calculate_adjusted_gain_reduction_necessary_to_avoid_clipping_when_mixed(all_tracks_max_peaks)
+    print("Calculated gain reduction to apply to all tracks: {reduction} dB".format(
+        reduction=calculated_gain_reduction_to_apply_to_all_tracks))
+
+
+    print("Will overlay {number_of_tracks} tracks...".format(number_of_tracks=number_of_tracks))
+    for i in range(number_of_tracks):
+        print("Mixing track: " + str(i+1) + " of " + str(number_of_tracks))
+        temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
+        print("Overlaying track {filepath} ...".format(filepath=temp_soundtrack_filepath))
+        track = AudioSegment.from_file(temp_soundtrack_filepath, format="wav")
+
+        if calculated_gain_reduction_to_apply_to_all_tracks < 0:
+            track = track.apply_gain(calculated_gain_reduction_to_apply_to_all_tracks)
+
+        final_track = final_track.overlay(track)
+
+        if os.path.exists(temp_soundtrack_filepath):
+            os.remove(temp_soundtrack_filepath)
+        else:
+            print("Cannot remove temporary stored track from disk: {path}".format(path=temp_soundtrack_filepath))
+
+    print("Normalizing final track")
     final_track = normalize_soundtrack(final_track)
 
     if PROCESSING_SAMPLE_RATE != FINAL_TRACK_SAMPLE_RATE:
