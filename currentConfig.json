@@ -1,106 +1,288 @@
 {
-  "lengthMs": 3600000,
+  "lengthMs": 40001,
   "bitDepth": 16,
   "sampleRate": 44100,
   "format": "wav",
   "sampleDataConfig": [
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/3a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/3b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/0a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/0b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 4000,
-        "minVolRatio": 0.28,
-        "maxVolRatio": 0.32,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 4000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.64,
+            "maxVolRatio": 0.68,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.1,
+            "maxVolRatio": 0.11,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     },
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/4a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/4b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/1a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/1b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 3000,
-        "minVolRatio": 0.46,
-        "maxVolRatio": 0.5,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 2000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.39,
+            "maxVolRatio": 0.43,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.1,
+            "maxVolRatio": 0.11,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     },
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/5a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/5b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/2a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/2b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 2500,
-        "minVolRatio": 0.52,
-        "maxVolRatio": 0.56,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 4000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.2,
+            "maxVolRatio": 0.24,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.1,
+            "maxVolRatio": 0.11,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     },
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/6a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/6b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/3a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/3b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 2500,
-        "minVolRatio": 0.54,
-        "maxVolRatio": 0.58,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 4000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.33,
+            "maxVolRatio": 0.37,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.1,
+            "maxVolRatio": 0.11,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     },
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/7a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/7b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/4a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/4b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 2000,
-        "minVolRatio": 0.3,
-        "maxVolRatio": 0.34,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 3000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.44,
+            "maxVolRatio": 0.48,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.1,
+            "maxVolRatio": 0.11,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     },
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/8a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/8b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/5a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/5b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 2000,
-        "minVolRatio": 0.6,
-        "maxVolRatio": 0.64,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 2500,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.34,
+            "maxVolRatio": 0.38,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.1,
+            "maxVolRatio": 0.11,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     },
     {
       "variationFilePath": [
-        "./sound-samples/custom/crystal-clear-stream/9a.ogg",
-        "./sound-samples/custom/crystal-clear-stream/9b.ogg"
+        "././sound-samples/custom/crystal-clear-stream/6a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/6b.ogg"
       ],
-      "params": {
-        "stitchingMethod": "JOIN_WITH_OVERLAY",
-        "concatOverlayMs": 2000,
-        "minVolRatio": 0.33,
-        "maxVolRatio": 0.37,
-        "minTimeframeLengthMs": 360000,
-        "maxTimeframeLengthMs": 720000
-      }
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 2500,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.3,
+            "maxVolRatio": 0.34,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.3,
+            "maxVolRatio": 0.34,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
+    },
+    {
+      "variationFilePath": [
+        "././sound-samples/custom/crystal-clear-stream/7a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/7b.ogg"
+      ],
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 2000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.28,
+            "maxVolRatio": 0.32,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.28,
+            "maxVolRatio": 0.32,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
+    },
+    {
+      "variationFilePath": [
+        "././sound-samples/custom/crystal-clear-stream/8a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/8b.ogg"
+      ],
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 2000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.24,
+            "maxVolRatio": 0.28,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.5,
+            "maxVolRatio": 0.6,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
+    },
+    {
+      "variationFilePath": [
+        "././sound-samples/custom/crystal-clear-stream/9a.ogg",
+        "././sound-samples/custom/crystal-clear-stream/9b.ogg"
+      ],
+      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "concatOverlayMs": 2000,
+      "timingWindows": [
+        {
+          "startAt": 0,
+          "params": {
+            "minVolRatio": 0.24,
+            "maxVolRatio": 0.28,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        },
+        {
+          "startAt": 30000,
+          "params": {
+            "minVolRatio": 0.5,
+            "maxVolRatio": 0.6,
+            "minTimeframeLengthMs": 3600,
+            "maxTimeframeLengthMs": 7200
+          }
+        }
+      ]
     }
   ]
 }

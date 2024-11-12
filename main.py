@@ -4,7 +4,7 @@ import os
 import random
 import time
 import warnings
-from typing import List
+from typing import List, Any
 from pydub import AudioSegment
 from pydub.utils import ratio_to_db, db_to_float
 
@@ -52,11 +52,10 @@ def get_sample_rate(file: AudioSegment):
 
 def create_soundtrack(
         samples_variations_filenames: List[str],
-        max_volume_gain_db: int,
-        min_volume_gain_db: int,
+        timing_windows: Any,
+
         max_length_seconds: int,
-        fading_timeframe_seconds_min: int,
-        fading_timeframe_seconds_max: int,
+
         sample_concat_overlay_seconds: float,
         sample_stitching_method: str,  # "JOIN_WITH_OVERLAY", "JOIN_WITH_CROSSFADE"
         bit_depth: int,
@@ -93,10 +92,12 @@ def create_soundtrack(
     print(samples_variations_filenames[0] + ": bit depth " + str(get_bit_depth_from_audio_segment(sample_variations_audio_segments[0])) + ", sample rate: " + str(
         get_sample_rate(sample_variations_audio_segments[0])))
 
-    processed_sample_milliseconds_length = max_length_seconds * 1000
+    desired_track_length_milliseconds = max_length_seconds * 1000
 
     # Keep adding the sample variations until the processed sample is processedSampleMaxLength minutes
-    while len(original_concatenated_sample) < processed_sample_milliseconds_length:
+    while len(original_concatenated_sample) < desired_track_length_milliseconds:
+
+
 
         # pick random sample variation to concatenate the final audio data
         random_sample_variation_index = random.randint(0, len(samples_variations_filenames) - 1)
@@ -139,7 +140,7 @@ def create_soundtrack(
             return Exception("Unknown stitching method")
 
     # crop processed sample at exact processedSampleMaxLength
-    original_concatenated_sample = original_concatenated_sample[:processed_sample_milliseconds_length]
+    original_concatenated_sample = original_concatenated_sample[:desired_track_length_milliseconds]
 
     # Process originalConcatenatedSample by taking parts out of it and applying
     # fading effects then adding it to processedConcatenatedSample
@@ -149,25 +150,19 @@ def create_soundtrack(
     processed_concatenated_sample.set_frame_rate(sample_rate)
     processed_concatenated_sample.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
-    # create a mapping of how the originalConcatenatedSample will be processed further
-    # split originalConcatenatedSample at random timing positions
-    max_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_max * 1000
-    min_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_min * 1000
-
-
-    if max_sample_segment_timeframe_milliseconds < min_sample_segment_timeframe_milliseconds:
-        raise Exception(samples_variations_filenames[0] + ": the max timeframe sample length is shorter than min timeframe sample length")
-
-    if processed_sample_milliseconds_length < min_sample_segment_timeframe_milliseconds:
-        raise Exception(samples_variations_filenames[0] + ": the final track length is shorter than its minimum fading timeframes length")
-
-    if processed_sample_milliseconds_length < max_sample_segment_timeframe_milliseconds:
-        raise Exception(samples_variations_filenames[0] + ": the final track length is shorter than the max fading timeframes length")
 
     # fill the mapping array with maximum elements that the algorithm can possibly fill
     # (if it always chooses minimum random intervals when it splits originalConcatenatedSample into segments )
+    min_sample_segment_timeframe_milliseconds_from_all_timeframes = timing_windows[0]["params"]["minTimeframeLengthMs"]
+    for timing_window in timing_windows:
+        if min_sample_segment_timeframe_milliseconds_from_all_timeframes > timing_window["params"]["minTimeframeLengthMs"]:
+            min_sample_segment_timeframe_milliseconds_from_all_timeframes = timing_window["params"]["minTimeframeLengthMs"]
+
+    if min_sample_segment_timeframe_milliseconds_from_all_timeframes == 0:
+        raise Exception("min_sample_segment_timeframe_milliseconds_from_all_timeframes cannot be zero")
+
     maximum_hypotetical_possible_sample_segments = int(
-            processed_sample_milliseconds_length // min_sample_segment_timeframe_milliseconds)
+            desired_track_length_milliseconds // min_sample_segment_timeframe_milliseconds_from_all_timeframes)
     sample_processing_mapping: List[SampleSplittingSegmentMap] = [
         SampleSplittingSegmentMap(
             split_start_at_included=None,
@@ -178,12 +173,45 @@ def create_soundtrack(
     ]
 
     # temp variables
-    _lastSegmentVolumeEnd = random.randint(min_volume_gain_db, max_volume_gain_db)
+    _lastSegmentVolumeEnd = random.randint(
+        safe_ratio_to_db(timing_windows[0]["params"]["minVolRatio"]),
+        safe_ratio_to_db(timing_windows[0]["params"]["maxVolRatio"]))
     _lastSegmentSplitEndIncluded = -1
     _originalSampleLength = len(original_concatenated_sample)
     _mappedSegmentsCount = 0
 
     for i in range(len(sample_processing_mapping)):
+        current_timing_window = timing_windows[0]
+        for timing_window_index, timing_window in reversed(list(enumerate(timing_windows))):
+            if timing_window_index == 0 and timing_window['startAt'] != 0:
+                raise Exception("The startAt property needs to be 0 in the first time window.")
+
+            if _lastSegmentSplitEndIncluded + 1 >= timing_window['startAt']:
+                current_timing_window = timing_window
+                break  # Breaks the inner loop, continues with next iteration of the outer loop
+
+        max_volume_gain_db = safe_ratio_to_db(current_timing_window["params"]["maxVolRatio"])
+        min_volume_gain_db = safe_ratio_to_db(current_timing_window["params"]["minVolRatio"])
+
+        fading_timeframe_seconds_min = int(current_timing_window["params"]["minTimeframeLengthMs"] / 1000)
+        fading_timeframe_seconds_max = int(current_timing_window["params"]["maxTimeframeLengthMs"] / 1000)
+
+        # create a mapping of how the originalConcatenatedSample will be processed further
+        # split originalConcatenatedSample at random timing positions
+        max_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_max * 1000
+        min_sample_segment_timeframe_milliseconds = fading_timeframe_seconds_min * 1000
+
+        if max_sample_segment_timeframe_milliseconds < min_sample_segment_timeframe_milliseconds:
+            raise Exception(samples_variations_filenames[
+                                0] + ": the max timeframe sample length is shorter than min timeframe sample length")
+
+        if desired_track_length_milliseconds < min_sample_segment_timeframe_milliseconds:
+            raise Exception(samples_variations_filenames[
+                                0] + ": the final track length is shorter than its minimum fading timeframes length")
+
+        if desired_track_length_milliseconds < max_sample_segment_timeframe_milliseconds:
+            raise Exception(samples_variations_filenames[
+                                0] + ": the final track length is shorter than the max fading timeframes length")
 
         random_segment_duration = random.randint(
             min_sample_segment_timeframe_milliseconds,
@@ -320,16 +348,14 @@ with open("currentConfig.json", "r") as file:
         print("Processing track: " + str(i+1) + " of " + str(number_of_tracks))
 
         current_sample_data_config = samples_data_config[i]
-        current_sample_stitching_method = current_sample_data_config["params"]["stitchingMethod"]
-        current_sample_concat_overlay_milliseconds = current_sample_data_config["params"]["concatOverlayMs"]
+        current_sample_stitching_method = current_sample_data_config["stitchingMethod"]
+        current_sample_concat_overlay_milliseconds = current_sample_data_config["concatOverlayMs"]
+        current_sample_variations_filepaths = current_sample_data_config["variationFilePath"]
 
         soundtrack = create_soundtrack(
-            samples_variations_filenames=current_sample_data_config["variationFilePath"],
-            max_volume_gain_db=safe_ratio_to_db(current_sample_data_config["params"]["maxVolRatio"]),
-            min_volume_gain_db=safe_ratio_to_db(current_sample_data_config["params"]["minVolRatio"]),
+            samples_variations_filenames=current_sample_variations_filepaths,
+            timing_windows = current_sample_data_config["timingWindows"],
             max_length_seconds=final_length_seconds,
-            fading_timeframe_seconds_min=int(current_sample_data_config["params"]["minTimeframeLengthMs"]/1000),
-            fading_timeframe_seconds_max=int(current_sample_data_config["params"]["maxTimeframeLengthMs"]/1000),
             sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds/1000),
             sample_stitching_method=current_sample_stitching_method,
             bit_depth=PROCESSING_BIT_DEPTH,  # set maximum bit depth for processing
