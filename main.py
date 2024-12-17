@@ -207,7 +207,7 @@ def create_soundtrack(
 
         if desired_track_length_milliseconds < min_sample_segment_timeframe_milliseconds:
             raise Exception(samples_variations_filenames[
-                                0] + ": the final track length is shorter than its minimum fading timeframes length")
+                                0] + ": the final track length is shorter than its minimum fading timeframes length" + str(desired_track_length_milliseconds) + " " + str(min_sample_segment_timeframe_milliseconds))
 
         if desired_track_length_milliseconds < max_sample_segment_timeframe_milliseconds:
             raise Exception(samples_variations_filenames[
@@ -320,14 +320,10 @@ def audio_format_to_file_extension(audio_format: str):
         return "wav"
 
 
-PROCESSING_BIT_DEPTH = 32
-PROCESSING_SAMPLE_RATE = 44100
+def process_json(jsonData):
 
-
-print("Reading config file...")
-with open("currentConfig.json", "r") as file:
-    print("Parsing json config file...")
-    jsonData = json.load(file)
+    PROCESSING_BIT_DEPTH = 32
+    PROCESSING_SAMPLE_RATE = 44100
 
     FINAL_TRACK_BIT_DEPTH = jsonData["bitDepth"]
     FINAL_TRACK_SAMPLE_RATE = jsonData["sampleRate"]
@@ -425,3 +421,36 @@ with open("currentConfig.json", "r") as file:
     print("Exporting...")
     # Export the final track
     final_track.export("generated/processedConcatenatedSample."+audio_format_to_file_extension(audio_format), format=audio_format)
+
+
+def process_json_from_file():
+    with open("currentConfig.json", "r") as file:
+        print("Parsing json config file...")
+        jsonData = json.load(file)
+        process_json(jsonData)
+
+
+from flask import Flask, request, jsonify, send_from_directory
+
+app = Flask(__name__, static_folder='webapp/src')
+
+@app.route('/')
+def serve_index():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(app.static_folder, filename)
+@app.route('/process_json', methods=['POST'])
+def handle_post():
+    data = request.get_json()  # Get the JSON data from the request
+    if data:
+        # Call your function here
+        process_json(data)
+        return jsonify({"message": "Success"}), 200
+    else:
+        return jsonify({"message": "Invalid JSON"}), 400
+
+if __name__ == '__main__':
+    app.run()
+    # process_json_from_file()

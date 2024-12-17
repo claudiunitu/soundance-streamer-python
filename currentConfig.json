@@ -1,60 +1,23 @@
 {
-  "lengthMs": 40001,
+  "lengthMs": 7200,
   "bitDepth": 16,
   "sampleRate": 44100,
   "format": "wav",
   "sampleDataConfig": [
     {
       "variationFilePath": [
-        "./sound-samples/demo/0a.m4a",
-        "./sound-samples/demo/0b.m4a"
+        "./webapp/src/sound-samples/demo/1a.m4a",
+        "./webapp/src/sound-samples/demo/1b.m4a",
+        "./webapp/src/sound-samples/demo/1c.m4a"
       ],
-      "stitchingMethod": "JOIN_WITH_OVERLAY",
+      "stitchingMethod": "JOIN_WITH_CROSSFADE",
       "concatOverlayMs": 1000,
       "timingWindows": [
         {
           "startAt": 0,
           "params": {
-            "minVolRatio": 0.64,
-            "maxVolRatio": 0.68,
-            "minTimeframeLengthMs": 3600,
-            "maxTimeframeLengthMs": 7200
-          }
-        }
-      ]
-    },
-    {
-      "variationFilePath": [
-        "./sound-samples/demo/1a.m4a",
-        "./sound-samples/demo/1b.m4a"
-      ],
-      "stitchingMethod": "JOIN_WITH_OVERLAY",
-      "concatOverlayMs": 1000,
-      "timingWindows": [
-        {
-          "startAt": 0,
-          "params": {
-            "minVolRatio": 0.39,
-            "maxVolRatio": 0.43,
-            "minTimeframeLengthMs": 3600,
-            "maxTimeframeLengthMs": 7200
-          }
-        }
-      ]
-    },
-    {
-      "variationFilePath": [
-        "./sound-samples/demo/2a.m4a",
-        "./sound-samples/demo/2b.m4a"
-      ],
-      "stitchingMethod": "JOIN_WITH_OVERLAY",
-      "concatOverlayMs": 1000,
-      "timingWindows": [
-        {
-          "startAt": 0,
-          "params": {
-            "minVolRatio": 0.2,
-            "maxVolRatio": 0.24,
+            "minVolRatio": 0.08,
+            "maxVolRatio": 1,
             "minTimeframeLengthMs": 3600,
             "maxTimeframeLengthMs": 7200
           }
