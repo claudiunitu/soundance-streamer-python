@@ -1,2 +1,3 @@
 sound-samples/custom/
-generated
+generated/*
+!generated/generated_files_stay_here
