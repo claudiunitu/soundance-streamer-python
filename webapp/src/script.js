@@ -463,7 +463,9 @@ function pollStatusAt() {
             headers: {}
         }).then((data) => {
             data.json().then((messages) => {
-                document.getElementById('console').innerHTML = messages.map(message => `<p>${message}</p>`).join('')
+                const container = document.getElementById('console-content');
+                container.innerHTML = messages.map(message => `<p>${message}</p>`).join('');
+                container.scrollTop = container.scrollHeight;
             });
             pollStatusAt();
         }).catch(error => {
