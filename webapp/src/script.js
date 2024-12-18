@@ -1,6 +1,8 @@
 // @ts-check
 
 
+import './components/range-slider.component.js';
+import './components/sample-toggler.component.js';
 import './components/sample-card.component.js';
 
 /**
@@ -112,7 +114,10 @@ let audioContext = new window.AudioContext();
 let isStarted = true; // Flag to prevent re-initialization
 
 /**
- * @type {{exportJsonButton: HTMLElement | null}}
+ * @type {{
+ *  exportJsonButton: HTMLElement | null, 
+ *  sendToBeProcessedButton: HTMLElement | null
+ * }}
  */
 const ctas = {
     exportJsonButton: document.getElementById('generateJsonButton'),
@@ -322,61 +327,6 @@ async function loadJson(url) {
 
 }
 
-/**
- * 
- * @param {LoadedSceneSamplesAudioData} scenerySampleAudioData 
- * @returns 
- */
-function playRandomVariation(scenerySampleAudioData) {
-    if (isStarted === false) return;
-
-    const numberOfVariations = scenerySampleAudioData.sampleVariationsAudioData.length;
-    const randomIndex = Math.floor(Math.random() * numberOfVariations);
-
-    const audioBuffer = scenerySampleAudioData.sampleVariationsAudioData[randomIndex].audioBuffer;
-    const gainNode = scenerySampleAudioData.sampleVariationsAudioData[randomIndex].gainNode;
-
-
-    const audioBufferSource = audioContext.createBufferSource();
-    audioBufferSource.buffer = audioBuffer;
-    audioBufferSource.connect(gainNode).connect(audioContext.destination);
-
-    // Store the buffer source for later stopping
-    scenerySampleAudioData.currentSource = audioBufferSource;
-
-    if (scenerySampleAudioData.stitchingMethod === "JOIN_WITH_CROSSFADE") {
-
-        // this will only start immediately after one sample ended and does not really create a crossfade
-        audioBufferSource.onended = () => {
-            if (isStarted) playRandomVariation(scenerySampleAudioData);
-        };
-
-    } else if (scenerySampleAudioData.stitchingMethod === "JOIN_WITH_OVERLAY") {
-
-        if (audioBuffer === null) {
-            return;
-        }
-        // Schedule the next variation to start before the current one ends
-        let nextStartTime = audioBuffer.duration * 1000 - scenerySampleAudioData.concatOverlayMs; // mark*
-
-        if (nextStartTime <= 0) {
-            console.warn(`
-                The overlay duration must be higher than the sample duration.\n
-                Will play the next variation after the current one ends:\n
-                ${scenerySampleAudioData.sampleVariationsAudioData[randomIndex].variationFilePath}
-            `);
-            nextStartTime = audioBuffer.duration;
-        }
-        // Set a timeout to start the next variation before the current one ends
-        scenerySampleAudioData.overlayTimeout = setTimeout(() => {
-            if (isStarted) playRandomVariation(scenerySampleAudioData);
-        }, nextStartTime);
-
-    }
-
-    audioBufferSource.start();
-}
-
 
 function removeCurrentSliders() {
     const slidersContainer = document.getElementById('sliders');
@@ -456,8 +406,13 @@ function generateCurrentConfigJSON(){
         sampleDataConfig = [...sampleDataConfig, ...generateCurrentConfigJsonForScene(localConfigData[sceneIndex], localConfigData[sceneIndex].subscenes[0])]
     }
 
+    /** @type {HTMLInputElement} */
+    const finalTrackLengthMinutesHtmlElement = /** @type {HTMLInputElement} */ (document.getElementById('finalTrackLengthMinutes'));
+    
+    const finalTrackLengthMilliseconds = parseInt(finalTrackLengthMinutesHtmlElement.value);
+    
     const configData = {
-        lengthMs: 60 * 60 * 1000,
+        lengthMs: isNaN(finalTrackLengthMilliseconds) ? 60 * 60 * 1000 : finalTrackLengthMilliseconds * 60 * 1000,
         bitDepth: 16,
         sampleRate: 44100,
         format: 'wav', // aac = adts
@@ -501,6 +456,25 @@ function addCtaEventListeners() {
 
 }
 
+function pollStatusAt() {
+    setTimeout(()=>{
+        fetch('/serve_status', {
+            method: 'GET',
+            headers: {}
+        }).then((data) => {
+            data.json().then((messages) => {
+                document.getElementById('console').innerHTML = messages.map(message => `<p>${message}</p>`).join('')
+            });
+            pollStatusAt();
+        }).catch(error => {
+            console.error('Error:', error);
+            pollStatusAt();
+        });
+    }, 5000)
+        
+    
+}
+
 /**
  * @param {SoundSceneConfig[]} config
  */
@@ -512,7 +486,7 @@ function initApp(config) {
 loadConfig().then((config) => {
     initApp(config)
     addCtaEventListeners();
-
+    pollStatusAt();
 }).catch(e => { throw e });
 
 

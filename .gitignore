@@ -1,4 +1,4 @@
-sound-samples/custom/
+webapp/src/sound-samples/custom/
 generated/*
 !generated/generated_files_stay_here
 webapp/src/sound-samples/*

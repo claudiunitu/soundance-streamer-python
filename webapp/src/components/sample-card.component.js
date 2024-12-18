@@ -1,8 +1,5 @@
 // @ts-check
 
-import './range-slider.component.js';
-import './sample-toggler.component.js';
-
 class SampleCardHTMLElement extends HTMLElement {
     
     /**

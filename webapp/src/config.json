@@ -29,14 +29,6 @@
                         {"minVol": 0, "maxVol": 0, "currentVol": 60, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
                         {"minVol": 70, "maxVol": 0, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000}
                     ]
-                },
-                {
-                    "startAt": 5000,
-                    "config": [
-                        {"minVol": 0, "maxVol": 0, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
-                        {"minVol": 0, "maxVol": 0, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
-                        {"minVol": 0, "maxVol": 0, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000}
-                    ]
                 }
                 
             ]
@@ -50,14 +42,6 @@
                         {"minVol": 49, "maxVol": 51, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
                         {"minVol": 49, "maxVol": 51, "minTimeframeLength": 360000, "maxTimeframeLength": 720000}
                     ]
-                },
-                {
-                    "startAt": 5000,
-                    "config": [
-                        {"minVol": 0, "maxVol": 100, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
-                        {"minVol": 0, "maxVol": 100, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
-                        {"minVol": 0, "maxVol": 100, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000}
-                    ]
                 }
                 
             ]
@@ -70,13 +54,6 @@
                         {"minVol": 10, "maxVol": 20, "minTimeframeLength": 10000, "maxTimeframeLength": 20000},
                         {"minVol": 50, "maxVol": 90, "minTimeframeLength": 10000, "maxTimeframeLength": 20000},
                         {"minVol": 10, "maxVol": 20, "minTimeframeLength": 10000, "maxTimeframeLength": 20000}
-                    ]
-                },
-                {
-                    "startAt": 5000,
-                    "config": [
-                        {"minVol": 0, "maxVol": 100, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000},
-                        {"minVol": 0, "maxVol": 100, "currentVol": 0, "minTimeframeLength": 360000, "maxTimeframeLength": 720000}
                     ]
                 }
                 
