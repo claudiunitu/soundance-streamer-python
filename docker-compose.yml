@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  app:
+  soundance-streamer-python:
     build: .
     ports:
       - "5000:5000"
     volumes:
-      - .:/app
+      - .:/soundance-streamer-python
     command: python main.py
     restart: unless-stopped
