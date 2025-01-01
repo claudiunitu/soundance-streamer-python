@@ -1,5 +1,5 @@
-webapp/src/sound-samples/custom/
-generated/*
-!generated/generated_files_stay_here
 webapp/src/sound-samples/*
 !webapp/src/sound-samples/demo
+generated/*
+!generated/generated_files_stay_here
+.venv

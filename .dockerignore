@@ -1,0 +1,4 @@
+generated/*
+!generated/generated_files_stay_here
+.venv
+.git
