@@ -63,9 +63,6 @@ input[type="range"] {
     margin: 0;
     display: none;
 }
-.sample-fields-groul-label {
-    text-align: center;
-}
 
 #console {
     width: 50%;

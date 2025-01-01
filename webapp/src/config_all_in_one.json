@@ -1,0 +1,4059 @@
+[
+    {
+        "sceneName": "All Samples",
+        "samples": [
+            {
+                "label": "Demo - White Noise",
+                "variationNames": [
+                    "sound-samples/demo/0a.m4a",
+                    "sound-samples/demo/0b.m4a",
+                    "sound-samples/demo/0c.m4a"
+                ],
+                "stitchingMethod": "JOIN_WITH_CROSSFADE",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Demo - Pink Noise",
+                "variationNames": [
+                    "sound-samples/demo/1a.m4a",
+                    "sound-samples/demo/1b.m4a",
+                    "sound-samples/demo/1c.m4a"
+                ],
+                "stitchingMethod": "JOIN_WITH_CROSSFADE",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Demo - Brown Noise",
+                "variationNames": [
+                    "sound-samples/demo/2a.m4a",
+                    "sound-samples/demo/2b.m4a",
+                    "sound-samples/demo/2c.m4a"
+                ],
+                "stitchingMethod": "JOIN_WITH_CROSSFADE",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/0a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/1a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Bass",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/2a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/3a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/4a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Mids",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/5a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/6a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/7a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - Treble",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/8a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Crystal Clear Spring Water - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/crystal-clear-stream/9a.ogg",
+                    "sound-samples/custom/crystal-clear-stream/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/0a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/1a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/2a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/3a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/4a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Mids",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/5a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/6a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/7a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - Treble",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/8a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Water Stream - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/water-stream-full-spectrum/9a.ogg",
+                    "sound-samples/custom/water-stream-full-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Rumble",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/0a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Low Gurgle",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/1a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Distant Lo",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/2a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Distand Med",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/3a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Distant Hi",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/4a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 11000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Close Lo",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/5a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Close Hi",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/6a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Water Noise Lo",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/7a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Water Noise Med",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/8a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "The Falls - Water Noise Hi",
+                "variationNames": [
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/9a.ogg",
+                    "sound-samples/custom/the-falls-waterfall-full-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/0a.ogg",
+                    "sound-samples/custom/water-cave/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/1a.ogg",
+                    "sound-samples/custom/water-cave/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/2a.ogg",
+                    "sound-samples/custom/water-cave/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/3a.ogg",
+                    "sound-samples/custom/water-cave/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/4a.ogg",
+                    "sound-samples/custom/water-cave/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Mids",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/5a.ogg",
+                    "sound-samples/custom/water-cave/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/6a.ogg",
+                    "sound-samples/custom/water-cave/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/7a.ogg",
+                    "sound-samples/custom/water-cave/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4700,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - Treble",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/8a.ogg",
+                    "sound-samples/custom/water-cave/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Cave Water - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/water-cave/9a.ogg",
+                    "sound-samples/custom/water-cave/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Footsteps",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/0a.ogg",
+                    "sound-samples/custom/healing-water/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Waterfall Far",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/1a.ogg",
+                    "sound-samples/custom/healing-water/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Waterfall Near",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/2a.ogg",
+                    "sound-samples/custom/healing-water/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Stream",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/3a.ogg",
+                    "sound-samples/custom/healing-water/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Cavity",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/4a.ogg",
+                    "sound-samples/custom/healing-water/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Creek Far",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/5a.ogg",
+                    "sound-samples/custom/healing-water/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Creek Near",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/6a.ogg",
+                    "sound-samples/custom/healing-water/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Brook Far",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/7a.ogg",
+                    "sound-samples/custom/healing-water/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Brook Near",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/8a.ogg",
+                    "sound-samples/custom/healing-water/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Healing Water - Birds",
+                "variationNames": [
+                    "sound-samples/custom/healing-water/9a.ogg",
+                    "sound-samples/custom/healing-water/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/0a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/1a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Bass",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/2a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/3a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/4a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Mids",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/5a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/6a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/7a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - Treble",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/8a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Desert Wind - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/desert-wind-full-spectrum/9a.ogg",
+                    "sound-samples/custom/desert-wind-full-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Rumble",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/0a.ogg",
+                    "sound-samples/custom/distant-thunder/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Rumble",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/1a.ogg",
+                    "sound-samples/custom/distant-thunder/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Low Thunder",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/2a.ogg",
+                    "sound-samples/custom/distant-thunder/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Low Thunder",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/3a.ogg",
+                    "sound-samples/custom/distant-thunder/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Thunder",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/4a.ogg",
+                    "sound-samples/custom/distant-thunder/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Thunder & Light Rain",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/5a.ogg",
+                    "sound-samples/custom/distant-thunder/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Thunder & Rain",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/6a.ogg",
+                    "sound-samples/custom/distant-thunder/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Thunder & Rain",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/7a.ogg",
+                    "sound-samples/custom/distant-thunder/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Rain",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/8a.ogg",
+                    "sound-samples/custom/distant-thunder/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Distant Thunder - Rain",
+                "variationNames": [
+                    "sound-samples/custom/distant-thunder/9a.ogg",
+                    "sound-samples/custom/distant-thunder/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/0a.ogg",
+                    "sound-samples/custom/fireplace/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/1a.ogg",
+                    "sound-samples/custom/fireplace/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Bass",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/2a.ogg",
+                    "sound-samples/custom/fireplace/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/3a.ogg",
+                    "sound-samples/custom/fireplace/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/4a.ogg",
+                    "sound-samples/custom/fireplace/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Mids",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/5a.ogg",
+                    "sound-samples/custom/fireplace/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/6a.ogg",
+                    "sound-samples/custom/fireplace/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/7a.ogg",
+                    "sound-samples/custom/fireplace/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - Treble",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/8a.ogg",
+                    "sound-samples/custom/fireplace/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Fireplace - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/fireplace/9a.ogg",
+                    "sound-samples/custom/fireplace/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Rumbling",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/0a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Warm",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/1a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Resonant",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/2a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Mellow",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/3a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Full",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/4a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Clear",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/5a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Bright",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/6a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Crisp",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/7a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Sharp",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/8a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Foliage wind - Tiny",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-foliage-wind/9a.ogg",
+                    "sound-samples/custom/full-spectrum-foliage-wind/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/0a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/1a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/2a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/3a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/4a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Mids",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/5a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/6a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/7a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - Treble",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/8a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Noise & Co - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-pure-white/9a.ogg",
+                    "sound-samples/custom/full-spectrum-pure-white/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/0a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/1a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/2a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/3a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/4a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Mids",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/5a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/6a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/7a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - Treble",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/8a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Wind in Trees Full Spectrum - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/full-spectrum-wind/9a.ogg",
+                    "sound-samples/custom/full-spectrum-wind/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            
+            {
+                "label": "Irish Coast - Wind Rumble",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/0a.ogg",
+                    "sound-samples/custom/irish-coast/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Waves Crash",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/1a.ogg",
+                    "sound-samples/custom/irish-coast/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Wind",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/2a.ogg",
+                    "sound-samples/custom/irish-coast/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Shore Noise",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/3a.ogg",
+                    "sound-samples/custom/irish-coast/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Inland",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/4a.ogg",
+                    "sound-samples/custom/irish-coast/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Seaside",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/5a.ogg",
+                    "sound-samples/custom/irish-coast/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Loch",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/6a.ogg",
+                    "sound-samples/custom/irish-coast/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Pebbles Shore",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/7a.ogg",
+                    "sound-samples/custom/irish-coast/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Water",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/8a.ogg",
+                    "sound-samples/custom/irish-coast/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Irish Coast - Rain",
+                "variationNames": [
+                    "sound-samples/custom/irish-coast/9a.ogg",
+                    "sound-samples/custom/irish-coast/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Prayer Call",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/0a.ogg",
+                    "sound-samples/custom/nocturnal-garden/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Seguia",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/1a.ogg",
+                    "sound-samples/custom/nocturnal-garden/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Frog",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/2a.ogg",
+                    "sound-samples/custom/nocturnal-garden/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Frog",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/3a.ogg",
+                    "sound-samples/custom/nocturnal-garden/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Cricket",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/4a.ogg",
+                    "sound-samples/custom/nocturnal-garden/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Cricket",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/5a.ogg",
+                    "sound-samples/custom/nocturnal-garden/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Cricket",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/6a.ogg",
+                    "sound-samples/custom/nocturnal-garden/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Cicada",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/7a.ogg",
+                    "sound-samples/custom/nocturnal-garden/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Cicada",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/8a.ogg",
+                    "sound-samples/custom/nocturnal-garden/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Nocturnal Garden - Cicada",
+                "variationNames": [
+                    "sound-samples/custom/nocturnal-garden/9a.ogg",
+                    "sound-samples/custom/nocturnal-garden/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Farthest",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/0a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Farther",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/1a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Far",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/2a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Not So Far",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/3a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - In Between",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/4a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Not So Close",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/5a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Getting Closer",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/6a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Closer",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/7a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Close",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/8a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Peninsula - Closest",
+                "variationNames": [
+                    "sound-samples/custom/peninsula-waves-spectrum/9a.ogg",
+                    "sound-samples/custom/peninsula-waves-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/railroads/0a.ogg",
+                    "sound-samples/custom/railroads/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/railroads/1a.ogg",
+                    "sound-samples/custom/railroads/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Bass",
+                "variationNames": [
+                    "sound-samples/custom/railroads/2a.ogg",
+                    "sound-samples/custom/railroads/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/railroads/3a.ogg",
+                    "sound-samples/custom/railroads/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/railroads/4a.ogg",
+                    "sound-samples/custom/railroads/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Mids",
+                "variationNames": [
+                    "sound-samples/custom/railroads/5a.ogg",
+                    "sound-samples/custom/railroads/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/railroads/6a.ogg",
+                    "sound-samples/custom/railroads/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/railroads/7a.ogg",
+                    "sound-samples/custom/railroads/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - Treble",
+                "variationNames": [
+                    "sound-samples/custom/railroads/8a.ogg",
+                    "sound-samples/custom/railroads/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Railroads - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/railroads/9a.ogg",
+                    "sound-samples/custom/railroads/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2700,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Sub-Bass Thunder",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/0a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Low-Bass Thunder",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/1a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Bass",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/2a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/3a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/4a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Mids",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/5a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/6a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/7a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - Treble",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/8a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain Full Spectrum - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/rain-noise-full-spectrum/9a.ogg",
+                    "sound-samples/custom/rain-noise-full-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/0a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 200,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/1a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Bass",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/2a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/3a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/4a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Mids",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/5a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/6a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/7a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - Treble",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/8a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Rain on a tent - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/rain-on-a-tent/9a.ogg",
+                    "sound-samples/custom/rain-on-a-tent/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Storm Wind",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/0a.ogg",
+                    "sound-samples/custom/stormy-weather/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Storm Rain",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/1a.ogg",
+                    "sound-samples/custom/stormy-weather/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Wind and Rain",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/2a.ogg",
+                    "sound-samples/custom/stormy-weather/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Rain and Thunder",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/3a.ogg",
+                    "sound-samples/custom/stormy-weather/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Rain and Thunder",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/4a.ogg",
+                    "sound-samples/custom/stormy-weather/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Rain and Thunder",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/5a.ogg",
+                    "sound-samples/custom/stormy-weather/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Porch Rain",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/6a.ogg",
+                    "sound-samples/custom/stormy-weather/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - White Rain",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/7a.ogg",
+                    "sound-samples/custom/stormy-weather/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Droplets",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/8a.ogg",
+                    "sound-samples/custom/stormy-weather/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 11000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Stormy Weather - Sizzle",
+                "variationNames": [
+                    "sound-samples/custom/stormy-weather/9a.ogg",
+                    "sound-samples/custom/stormy-weather/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/0a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/1a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Bass",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/2a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/3a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 12000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/4a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 12000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Mids",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/5a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 11000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/6a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 11000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/7a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - Treble",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/8a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Tin Roof Rain - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/9a.ogg",
+                    "sound-samples/custom/tin-roof-rain-full-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/0a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/1a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 10000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Bass",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/2a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 11000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/3a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 9500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/4a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Mids",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/5a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/6a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/7a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - Treble",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/8a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Unreal Wind - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/unreal-wind-full-spectrum/9a.ogg",
+                    "sound-samples/custom/unreal-wind-full-spectrum/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Butler Upstairs",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/0a.ogg",
+                    "sound-samples/custom/windy-mansion/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Butler",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/1a.ogg",
+                    "sound-samples/custom/windy-mansion/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Butler",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/2a.ogg",
+                    "sound-samples/custom/windy-mansion/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Window Wind",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/3a.ogg",
+                    "sound-samples/custom/windy-mansion/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Window Wind",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/4a.ogg",
+                    "sound-samples/custom/windy-mansion/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Wind and creaks",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/5a.ogg",
+                    "sound-samples/custom/windy-mansion/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Strong Wind",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/6a.ogg",
+                    "sound-samples/custom/windy-mansion/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Howling",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/7a.ogg",
+                    "sound-samples/custom/windy-mansion/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Howling",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/8a.ogg",
+                    "sound-samples/custom/windy-mansion/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Windy Mansion - Rain",
+                "variationNames": [
+                    "sound-samples/custom/windy-mansion/9a.ogg",
+                    "sound-samples/custom/windy-mansion/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1200,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Water Cavity",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/0a.ogg",
+                    "sound-samples/custom/meadow-land/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Distant Stream",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/1a.ogg",
+                    "sound-samples/custom/meadow-land/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Beaver Dam",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/2a.ogg",
+                    "sound-samples/custom/meadow-land/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Creak",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/3a.ogg",
+                    "sound-samples/custom/meadow-land/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Brook",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/4a.ogg",
+                    "sound-samples/custom/meadow-land/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Water and Birds",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/5a.ogg",
+                    "sound-samples/custom/meadow-land/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Thrush",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/6a.ogg",
+                    "sound-samples/custom/meadow-land/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1200,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Thrush",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/7a.ogg",
+                    "sound-samples/custom/meadow-land/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1100,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Grass Winds",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/8a.ogg",
+                    "sound-samples/custom/meadow-land/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Meadow Land - Crickets",
+                "variationNames": [
+                    "sound-samples/custom/meadow-land/9a.ogg",
+                    "sound-samples/custom/meadow-land/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Footsteps",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/0a.ogg",
+                    "sound-samples/custom/spring-walk/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Footsteps",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/1a.ogg",
+                    "sound-samples/custom/spring-walk/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Bees",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/2a.ogg",
+                    "sound-samples/custom/spring-walk/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Wind",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/3a.ogg",
+                    "sound-samples/custom/spring-walk/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Water",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/4a.ogg",
+                    "sound-samples/custom/spring-walk/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Blackbird",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/5a.ogg",
+                    "sound-samples/custom/spring-walk/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Birds",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/6a.ogg",
+                    "sound-samples/custom/spring-walk/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Birds",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/7a.ogg",
+                    "sound-samples/custom/spring-walk/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Birds",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/8a.ogg",
+                    "sound-samples/custom/spring-walk/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Spring Walk Deep Woods - Birds",
+                "variationNames": [
+                    "sound-samples/custom/spring-walk/9a.ogg",
+                    "sound-samples/custom/spring-walk/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Warm Wind",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/0a.ogg",
+                    "sound-samples/custom/summer-walk/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - River",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/1a.ogg",
+                    "sound-samples/custom/summer-walk/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Footsteps",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/2a.ogg",
+                    "sound-samples/custom/summer-walk/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 700,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Bees Flying",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/3a.ogg",
+                    "sound-samples/custom/summer-walk/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Buzzy Bees",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/4a.ogg",
+                    "sound-samples/custom/summer-walk/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 8000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Larks",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/5a.ogg",
+                    "sound-samples/custom/summer-walk/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Grass Wind",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/6a.ogg",
+                    "sound-samples/custom/summer-walk/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Grasshopers",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/7a.ogg",
+                    "sound-samples/custom/summer-walk/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Grasshopers",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/8a.ogg",
+                    "sound-samples/custom/summer-walk/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Summer Walk - Grasshopers",
+                "variationNames": [
+                    "sound-samples/custom/summer-walk/9a.ogg",
+                    "sound-samples/custom/summer-walk/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 2000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Wind",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/0a.ogg",
+                    "sound-samples/custom/palm-garden/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Wind",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/1a.ogg",
+                    "sound-samples/custom/palm-garden/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Wind",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/2a.ogg",
+                    "sound-samples/custom/palm-garden/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Water",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/3a.ogg",
+                    "sound-samples/custom/palm-garden/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Water",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/4a.ogg",
+                    "sound-samples/custom/palm-garden/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Water",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/5a.ogg",
+                    "sound-samples/custom/palm-garden/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Birds",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/6a.ogg",
+                    "sound-samples/custom/palm-garden/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Dove",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/7a.ogg",
+                    "sound-samples/custom/palm-garden/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Sparrows",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/8a.ogg",
+                    "sound-samples/custom/palm-garden/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "Palm Garden - Sparrows",
+                "variationNames": [
+                    "sound-samples/custom/palm-garden/9a.ogg",
+                    "sound-samples/custom/palm-garden/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 1500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            }
+        ]
+    }
+]

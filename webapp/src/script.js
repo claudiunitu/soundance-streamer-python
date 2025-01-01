@@ -46,7 +46,7 @@ const SampleStitchingMethods = {
  * @typedef {Object} SubsceneWindow
  * 
  * @property {number} startAt At which point (in milliseconds) the config should start when the final sound will be processed
- * @property {SubsceneWindowsConfig[]} config Subscene window config
+ * @property {SubsceneWindowsConfig} config Subscene window config
  */
 
 /**
@@ -63,15 +63,14 @@ const SampleStitchingMethods = {
  * @property {string} label Sound samples name
  * @property {SampleStitchingMethod} stitchingMethod Sound sample stitching method when looping
  * @property {string[]} variationNames Sound sample variations file paths
+ * @property {SubsceneWindowsConfig} config 
  */
 
 /**
  * @typedef {Object} SoundSceneConfig
  * 
- * @property {string} directory Directory path for the sound files
  * @property {SoundSampleConfig[]} samples Sound samples config
  * @property {string} sceneName Sound samples config
- * @property {SubsceneConfig[]} subscenes Subscene config
  */
 
 /** 
@@ -93,7 +92,7 @@ let localConfigData;
  * @property {AudioBufferSourceNode | null} currentSource 
  * @property {SampleStitchingMethod} stitchingMethod 
  * @property {number} concatOverlayMs 
- * @property {SampleSubsceneConfigParam[]} sampleSubsceneConfigParams 
+ * @property {SubsceneWindow} sampleSubsceneConfigParams 
  * @property {SampleVariationAudioData[]} sampleVariationsAudioData 
  * @property {string} sampleLabel 
  */
@@ -117,11 +116,20 @@ let isStarted = true; // Flag to prevent re-initialization
  * @type {{
  *  exportJsonButton: HTMLElement | null, 
  *  sendToBeProcessedButton: HTMLElement | null
+ *  saveConfigToDisk: HTMLElement | null
+ *  loadConfigFromDisk: HTMLElement | null
+ *  savedSubscenesSelector: HTMLElement | null 
+ *  currentSubsceneLabelInput: HTMLElement | null 
  * }}
  */
 const ctas = {
     exportJsonButton: document.getElementById('generateJsonButton'),
     sendToBeProcessedButton: document.getElementById('sendToProcessorButton'),
+    saveConfigToDisk: document.getElementById('saveConfigToDisk'),
+    loadConfigFromDisk: document.getElementById('loadConfigFromDisk'),
+    savedSubscenesSelector: document.getElementById('savedSubscenesSelector'),
+    currentSubsceneLabelInput: document.getElementById('currentSubsceneLabelInput'),
+    
 }
 
 /**
@@ -148,7 +156,7 @@ function onLoadingFinished() {
  */
 async function loadConfig() {
     onLoadingStarted();
-    const config = await loadJson(`/config.json`).catch(e => { throw e });
+    const config = await loadJson(`/config_all_in_one.json`).catch(e => { throw e });
     onLoadingFinished();
     return config;
 }
@@ -186,18 +194,16 @@ function loadAndParseDataForSceneData(scenes, _selectedSceneIndex, _selectedSubs
         const sampleVariationsAudioData = [];
 
 
-        const sampleSubsceneConfigParams = sceneObject.subscenes.map(scene => {
-            return {
-                label: scene.label,
-                params: !scene.subsceneWindows[_selectedSubsceneWindowIndex] ? null : scene.subsceneWindows[_selectedSubsceneWindowIndex].config[i],
-            }
-        });
+        const sampleSubsceneConfigParams = {
+                startAt: 0,
+                config: scenes[_selectedSceneIndex].samples[i].config,
+        };
 
         for (let j = 0; j < sceneObject.samples[i].variationNames.length; j++) {
             const variationFilePath = `${sceneObject.samples[i].variationNames[j]}`;
             const audioBuffer = null;
             const gainNode = audioContext.createGain();
-            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(scenes[_selectedSceneIndex].samples[i].config.currentVol || 0, audioContext.currentTime);
 
             sampleVariationsAudioData.push({
                 variationFilePath,
@@ -218,7 +224,7 @@ function loadAndParseDataForSceneData(scenes, _selectedSceneIndex, _selectedSubs
             concatOverlayMs,
             sampleSubsceneConfigParams,
             sampleVariationsAudioData,
-            sampleLabel: `${sceneObject.sceneName} - ${sceneObject.samples[i].label}`
+            sampleLabel: `${sceneObject.samples[i].label}`
         });
     }
     return returnObj
@@ -246,7 +252,7 @@ function loadAndParseNewSceneData(scenes, _selectedSceneIndex, _selectedSubscene
 
         const groupHTMLParent = document.createElement('div');
         const groupLabel = /** @type {HTMLLabelElement} */ (document.createElement('label'));
-        groupLabel.classList.add('group-label');
+        groupLabel.classList.add('group-label', 'group-label-open');
         groupLabel.innerText = scenes[sceneIndex].sceneName;
 
         groupLabel.addEventListener('click', (event) => {
@@ -282,36 +288,6 @@ function loadAndParseNewSceneData(scenes, _selectedSceneIndex, _selectedSubscene
     onLoadingFinished();
 }
 
-/**
- * 
- * @param {LoadedSceneSamplesAudioData} sceneSamplesAudio 
- */
-function stopSceneSampleVariations(sceneSamplesAudio) {
-
-    // for (let i = 0; i < sceneSamplesAudioData.length; i++) {
-        if (sceneSamplesAudio.overlayTimeout) {
-
-            clearTimeout(sceneSamplesAudio.overlayTimeout)
-        }
-        const currentSource = sceneSamplesAudio.currentSource;
-        if (currentSource) {
-            currentSource.stop();  // Stop the audio
-            sceneSamplesAudio.currentSource = null;  // Clear the reference
-        }
-    // }
-}
-
-// Function to fetch and decode an audio file
-async function loadSound(url) {
-    try {
-        const response = await fetch(url);
-        const arrayBuffer = await response.arrayBuffer();
-        return await audioContext.decodeAudioData(arrayBuffer);
-    } catch (error) {
-        console.error(`Failed to load sound file at ${url}:`, error);
-        return null; // Return null to prevent errors from breaking the whole program
-    }
-}
 /**
  * @param {string} url URL of config.json file
  * @returns {Promise<SoundSceneConfig[]>}
@@ -363,28 +339,23 @@ function removeCurrentSliders() {
 /**
  * 
  * @param {SoundSceneConfig} currentScene 
- * @param {SubsceneConfig} currentSubscene 
  * @returns {ExportableSceneSamplesConfig[]}
  */
-function generateCurrentConfigJsonForScene(currentScene, currentSubscene) {
+function generateCurrentConfigJsonForScene(currentScene) {
     return currentScene.samples.map((sample, sampleIndex) => {
 
-        const timingWindows = currentSubscene.subsceneWindows.map((subsceneWindow, i) => {
-            if (i === 0 && subsceneWindow.startAt !== 0) {
-                throw new Error("The property 'startAt' needs to be 0 in the first timing window")
-            }
-            return {
-                startAt: subsceneWindow.startAt,
+        const timingWindows = [{
+            startAt: 0,
+            params: {
 
-                params: {
-
-                    minVolRatio: subsceneWindow.config[sampleIndex].minVol / 100,
-                    maxVolRatio: subsceneWindow.config[sampleIndex].maxVol / 100,
-                    minTimeframeLengthMs: subsceneWindow.config[sampleIndex].minTimeframeLength,
-                    maxTimeframeLengthMs: subsceneWindow.config[sampleIndex].maxTimeframeLength
-                }
+                minVolRatio: sample.config.minVol / 100,
+                maxVolRatio: sample.config.maxVol / 100,
+                minTimeframeLengthMs: sample.config.minTimeframeLength,
+                maxTimeframeLengthMs: sample.config.maxTimeframeLength
             }
-        })
+        }];
+
+        
 
         const variationFilePath = sample.variationNames.map(variationName => `./webapp/src/${variationName}`);
 
@@ -403,7 +374,7 @@ function generateCurrentConfigJSON(){
     let sampleDataConfig = []
 
     for (let sceneIndex = 0; sceneIndex < localConfigData.length; sceneIndex++) {
-        sampleDataConfig = [...sampleDataConfig, ...generateCurrentConfigJsonForScene(localConfigData[sceneIndex], localConfigData[sceneIndex].subscenes[0])]
+        sampleDataConfig = [...sampleDataConfig, ...generateCurrentConfigJsonForScene(localConfigData[sceneIndex])]
     }
 
     /** @type {HTMLInputElement} */
@@ -450,9 +421,180 @@ function downloadJsonFile(jsonString, filename) {
     URL.revokeObjectURL(url); // Free up memory
 }
 
+/**
+ * @typedef {Object} ExportableSceneSamplesConfigForSaveToDisk
+ * 
+ * @property {string} subsceneLabel
+ * @property {ExportableSamplesConfigForSaveToDisk[]} config
+ */
+/**
+ * @typedef {Object} ExportableSamplesConfigForSaveToDisk
+ * 
+ * @property {string} id
+ * @property {SubsceneWindow} subsceneWindow
+ */
+/**
+ * 
+ * @param {LoadedSceneSamplesAudioData} currentScene 
+ * @returns {ExportableSamplesConfigForSaveToDisk}
+ */
+function generateCurrentConfigForSaveToDiskForScene(currentScene) {
+
+        return {
+            id: currentScene.sampleLabel,
+            subsceneWindow: currentScene.sampleSubsceneConfigParams
+        };
+    
+}
+/**
+ * 
+ * @returns {ExportableSceneSamplesConfigForSaveToDisk}
+ */
+function generateCurrentConfigForSaveToDisk() {
+
+    if(!ctas.currentSubsceneLabelInput.value){
+        alert("Please fill a subscene label");
+        return;
+    }
+    
+    /**
+     * @type {ExportableSamplesConfigForSaveToDisk[]}
+     */
+    let dataToSave = [];
+
+    for (let sceneIndex = 0; sceneIndex < sceneSamplesAudioData.length; sceneIndex++) {
+        dataToSave = [...dataToSave, generateCurrentConfigForSaveToDiskForScene(sceneSamplesAudioData[sceneIndex])]
+    }
+
+    return {
+        subsceneLabel: ctas.currentSubsceneLabelInput.value,
+        config: dataToSave
+    };
+}
+
+function saveConfigToDisk(){
+    const json = generateCurrentConfigForSaveToDisk();
+    if(!json){
+        return;
+    }
+    console.log(json);
+
+    /** @type {string | undefined} */
+    const currentJson = localStorage.getItem('scenesConfig');
+    
+
+    if(currentJson){
+        /** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
+        const currentParsedJson =  JSON.parse(localStorage.getItem('scenesConfig'));
+        const existingSavedConfigSubsceneIndex = currentParsedJson.findIndex(currentParsedJsonItem => currentParsedJsonItem.subsceneLabel === json.subsceneLabel);
+        if(existingSavedConfigSubsceneIndex > -1){
+            currentParsedJson[existingSavedConfigSubsceneIndex] = json;
+        } else {
+            currentParsedJson.push(json)
+        }
+        localStorage.setItem('scenesConfig', JSON.stringify(currentParsedJson));
+    } else {
+        localStorage.setItem('scenesConfig', JSON.stringify([json]));
+    }
+
+}
+
+function onSelectedSubscene(selectedSubsceneLabel){
+    ctas.currentSubsceneLabelInput.value = selectedSubsceneLabel;
+
+}
+/**
+ * 
+ * @param {string} sceneLabel 
+ */
+function loadConfigFromDisk(sceneLabel){
+
+    
+    const lsItem = localStorage.getItem('scenesConfig');
+
+    if(!lsItem){
+        return;
+    }
+
+    
+    /** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
+    const json =  JSON.parse(lsItem);
+
+    const savedSubscene = json.find(jsonItem => jsonItem.subsceneLabel === sceneLabel);
+
+    if(!savedSubscene){
+        return;
+    }
+
+    for (let sceneIndex = 0; sceneIndex < sceneSamplesAudioData.length; sceneIndex++) {
+
+        // if the current scene has a saved config
+        sceneSamplesAudioData.forEach((loadedSample, sampleIndex) => {
+            const foundSavedSampleConfig = savedSubscene.config.find(jsonItem => jsonItem.id === loadedSample.sampleLabel);
+            if(foundSavedSampleConfig){
+                const isVolChanged = loadedSample.sampleSubsceneConfigParams.config.currentVol !== foundSavedSampleConfig.subsceneWindow.config.currentVol;
+                const isMinVolChanged = loadedSample.sampleSubsceneConfigParams.config.minVol !== foundSavedSampleConfig.subsceneWindow.config.minVol;
+                const isMaxVolChanged = loadedSample.sampleSubsceneConfigParams.config.maxVol !== foundSavedSampleConfig.subsceneWindow.config.maxVol;
+                const isTFMinChanged = loadedSample.sampleSubsceneConfigParams.config.minTimeframeLength !== foundSavedSampleConfig.subsceneWindow.config.minTimeframeLength;
+                const isTFmaxChanged = loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength !== foundSavedSampleConfig.subsceneWindow.config.maxTimeframeLength;
+
+                
+                
+                
+                loadedSample.sampleSubsceneConfigParams.startAt = foundSavedSampleConfig.subsceneWindow.startAt;
+                
+                if(isVolChanged){
+                    /** @type {RangeSliderHTMLElement} */
+                    const sampleVolumeElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.volume-slider');
+                    loadedSample.sampleSubsceneConfigParams.config.currentVol = foundSavedSampleConfig.subsceneWindow.config.currentVol;
+                    sampleVolumeElement.value = loadedSample.sampleSubsceneConfigParams.config.currentVol;
+                    sampleVolumeElement.dispatchEvent(new Event('valueChange'));
+                }
+                if(isMinVolChanged){
+                    /** @type {RangeSliderHTMLElement} */
+                    const sampleVolumeMinElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.volume-min-slider');
+                    loadedSample.sampleSubsceneConfigParams.config.minVol = foundSavedSampleConfig.subsceneWindow.config.minVol;
+                    sampleVolumeMinElement.value = loadedSample.sampleSubsceneConfigParams.config.minVol;
+                    sampleVolumeMinElement.dispatchEvent(new Event('valueChange'));
+                }
+                if(isMaxVolChanged){
+                    /** @type {RangeSliderHTMLElement} */
+                    const sampleVolumeMaxElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.volume-max-slider');
+                    loadedSample.sampleSubsceneConfigParams.config.maxVol = foundSavedSampleConfig.subsceneWindow.config.maxVol;
+                    sampleVolumeMaxElement.value = loadedSample.sampleSubsceneConfigParams.config.maxVol;
+                    sampleVolumeMaxElement.dispatchEvent(new Event('valueChange'));
+                }
+                if(isTFMinChanged){
+                    /** @type {RangeSliderHTMLElement} */
+                    const sampleTimeframeMinElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.timeframe-min-slider');
+                    loadedSample.sampleSubsceneConfigParams.config.minTimeframeLength = foundSavedSampleConfig.subsceneWindow.config.minTimeframeLength;
+                    sampleTimeframeMinElement.value = loadedSample.sampleSubsceneConfigParams.config.minTimeframeLength;
+                    sampleTimeframeMinElement.dispatchEvent(new Event('valueChange'));
+                }
+                if(isTFmaxChanged){
+                    /** @type {RangeSliderHTMLElement} */
+                    const sampleTimeframeMaxElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.timeframe-max-slider');
+                    loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength = foundSavedSampleConfig.subsceneWindow.config.maxTimeframeLength;
+                    sampleTimeframeMaxElement.value = loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength;
+                    sampleTimeframeMaxElement.dispatchEvent(new Event('valueChange'));
+                }
+            }
+            
+        });
+        
+    
+
+    }
+    
+}
+
 function addCtaEventListeners() {
     ctas.exportJsonButton?.addEventListener('click', generateAndDownloadCurrentConfigJson);
     ctas.sendToBeProcessedButton?.addEventListener('click', sendToBeProcessed);
+    ctas.saveConfigToDisk?.addEventListener('click', saveConfigToDisk);
+    ctas.savedSubscenesSelector?.addEventListener('click', (event) => onSelectedSubscene(event.target.value ));
+    ctas.loadConfigFromDisk?.addEventListener('click', (event) => loadConfigFromDisk(ctas.savedSubscenesSelector.value ));
+
 
 }
 
@@ -476,6 +618,25 @@ function pollStatusAt() {
         
     
 }
+
+const lsItem = localStorage.getItem('scenesConfig');
+if(lsItem){
+    /** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
+    const savedSubscenes =  JSON.parse(lsItem);
+    savedSubscenes.forEach(subscene => {
+        const option = document.createElement('option');
+        option.innerText = subscene.subsceneLabel;
+        option.value = subscene.subsceneLabel;
+        ctas.savedSubscenesSelector.append(option)
+    })
+}
+
+
+
+/** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
+const json =  JSON.parse(lsItem);
+
+
 
 /**
  * @param {SoundSceneConfig[]} config

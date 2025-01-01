@@ -49,8 +49,11 @@ class SampleCardHTMLElement extends HTMLElement {
                 margin-bottom: 5px;
                 display: block;
             }
-            .sample-fields-groul-label {
-                text-align: center;
+            .sample-accordion-body {
+                display: none;
+            }
+            .sample-accordion-body.active {
+                display: block;
             }
             
         `;
@@ -167,7 +170,8 @@ class SampleCardHTMLElement extends HTMLElement {
 
         const { sampleVariationsAudioData, sampleSubsceneConfigParams } = loadedSceneSampleAudioData
     
-        const currentSubsceneParams = sampleSubsceneConfigParams[_selectedSubsceneIndex].params;
+        const currentSubsceneParams = sampleSubsceneConfigParams.config;
+        const startAt = sampleSubsceneConfigParams.startAt;
     
         let currentSceneSampleVol = 0;
         if (typeof currentSubsceneParams?.currentVol === "number") {
@@ -183,9 +187,22 @@ class SampleCardHTMLElement extends HTMLElement {
     
         // add label to controls group
         const labelElement = document.createElement('label');
-        labelElement.classList.add('sample-fields-groul-label');
-        labelElement.innerText = loadedSceneSampleAudioData.sampleLabel;
+        labelElement.classList.add('sample-fields-group-label');
+        labelElement.innerText = `${loadedSceneSampleAudioData.sampleLabel} start at: ${startAt}`;
         sampleContainer.appendChild(labelElement);
+
+        // add accodion body
+        const accordionBodyElement = document.createElement('div');
+        accordionBodyElement.classList.add('sample-accordion-body');
+        sampleContainer.appendChild(accordionBodyElement);
+
+        labelElement.addEventListener('click', (event) => {
+            if(accordionBodyElement.classList.contains('active')){
+                accordionBodyElement.classList.remove('active');
+            } else {
+                accordionBodyElement.classList.add('active');
+            }
+        });
     
     
         // const forCurrentSampleIndex = 0;
@@ -247,7 +264,9 @@ class SampleCardHTMLElement extends HTMLElement {
                 }
             }
         });
-        sampleContainer.appendChild(sampleTogglerElement);
+
+
+        accordionBodyElement.appendChild(sampleTogglerElement);
     
     
     
@@ -256,6 +275,7 @@ class SampleCardHTMLElement extends HTMLElement {
          *  @type {RangeSliderHTMLElement} 
          */
         const volElement = /** @type {RangeSliderHTMLElement} */(document.createElement('range-slider'));
+        volElement.classList.add('volume-slider')
     
         volElement.addEventListener('valueChange', async (event) => {
             /** @type {RangeSliderHTMLElement} */
@@ -292,7 +312,7 @@ class SampleCardHTMLElement extends HTMLElement {
     
         // volElement.dispatchEvent(new CustomEvent('valueChange'));
     
-        sampleContainer.appendChild(volElement);
+        accordionBodyElement.appendChild(volElement);
     
     
         // setup volume min slider
@@ -300,6 +320,7 @@ class SampleCardHTMLElement extends HTMLElement {
          *  @type {RangeSliderHTMLElement} 
          */
         const minVolElement = /** @type {RangeSliderHTMLElement} */ (document.createElement('range-slider'));
+        minVolElement.classList.add('volume-min-slider');
     
         minVolElement.addEventListener('valueChange', (event) => {
     
@@ -321,10 +342,10 @@ class SampleCardHTMLElement extends HTMLElement {
         minVolElement.min = 0;
         minVolElement.max = 100;
         minVolElement.scaleUnitLabel = '%';
-        minVolElement.value = sampleSubsceneConfigParams[_selectedSubsceneIndex].params !== null ? sampleSubsceneConfigParams[_selectedSubsceneIndex].params.minVol : 0;
+        minVolElement.value = currentSubsceneParams !== null ? currentSubsceneParams.minVol : 0;
     
     
-        sampleContainer.appendChild(minVolElement);
+        accordionBodyElement.appendChild(minVolElement);
     
     
         // setup volume max slider
@@ -332,6 +353,7 @@ class SampleCardHTMLElement extends HTMLElement {
          *  @type {RangeSliderHTMLElement} 
          */
         const maxVolElement = /** @type {RangeSliderHTMLElement} */ (document.createElement('range-slider'));
+        maxVolElement.classList.add('volume-max-slider');
     
         maxVolElement.addEventListener('valueChange', (event) => {
     
@@ -362,9 +384,9 @@ class SampleCardHTMLElement extends HTMLElement {
         maxVolElement.min = 0;
         maxVolElement.max = 100;
         maxVolElement.scaleUnitLabel = '%';
-        maxVolElement.value = sampleSubsceneConfigParams[_selectedSubsceneIndex].params !== null ? sampleSubsceneConfigParams[_selectedSubsceneIndex].params.maxVol : 0;
+        maxVolElement.value = currentSubsceneParams !== null ? currentSubsceneParams.maxVol : 0;
     
-        sampleContainer.appendChild(maxVolElement);
+        accordionBodyElement.appendChild(maxVolElement);
     
     
         // setup variational timeframe min slider
@@ -372,21 +394,22 @@ class SampleCardHTMLElement extends HTMLElement {
          *  @type {RangeSliderHTMLElement} 
          */
         const minTimeframeElement =  /**@type {RangeSliderHTMLElement} */ (document.createElement('range-slider'));
+        minTimeframeElement.classList.add('timeframe-min-slider');
     
         minTimeframeElement.addEventListener('valueChange', (event) => {
     
             /** @type {RangeSliderHTMLElement} */
             const target = /** @type {RangeSliderHTMLElement} */ (event.target);
     
-            const limitingValue = sampleSubsceneConfigParams[_selectedSubsceneIndex].params !== null ? Math.floor(sampleSubsceneConfigParams[_selectedSubsceneIndex].params.maxTimeframeLength / 1000) - 2 : 120;
+            const limitingValue = currentSubsceneParams !== null ? Math.floor(currentSubsceneParams.maxTimeframeLength / 1000) - 2 : 120;
             if (target.value >= limitingValue) {
-                if (sampleSubsceneConfigParams[_selectedSubsceneIndex].params) {
-                    sampleSubsceneConfigParams[_selectedSubsceneIndex].params.minTimeframeLength = limitingValue * 1000;
+                if (currentSubsceneParams) {
+                    currentSubsceneParams.minTimeframeLength = limitingValue * 1000;
                 }
                 target.value = limitingValue;
             } else {
-                if (sampleSubsceneConfigParams[_selectedSubsceneIndex].params) {
-                    sampleSubsceneConfigParams[_selectedSubsceneIndex].params.minTimeframeLength = target.value * 1000;
+                if (currentSubsceneParams) {
+                    currentSubsceneParams.minTimeframeLength = target.value * 1000;
                 }
             }
     
@@ -402,9 +425,9 @@ class SampleCardHTMLElement extends HTMLElement {
         minTimeframeElement.max = 60 * 60;
         minTimeframeElement.scaleUnitLabel = 's';
         minTimeframeElement.step = 10;
-        minTimeframeElement.value = sampleSubsceneConfigParams[_selectedSubsceneIndex].params !== null ? Math.floor(sampleSubsceneConfigParams[_selectedSubsceneIndex].params.minTimeframeLength / 1000) : 60;
+        minTimeframeElement.value = currentSubsceneParams !== null ? Math.floor(currentSubsceneParams.minTimeframeLength / 1000) : 60;
     
-        sampleContainer.appendChild(minTimeframeElement);
+        accordionBodyElement.appendChild(minTimeframeElement);
     
     
         // setup variational timeframe max slider
@@ -412,20 +435,21 @@ class SampleCardHTMLElement extends HTMLElement {
          *  @type {RangeSliderHTMLElement} 
          */
         const maxTimeframeElement = /**@type {RangeSliderHTMLElement} */ (document.createElement('range-slider'));
+        maxTimeframeElement.classList.add('timeframe-max-slider');
     
         maxTimeframeElement.addEventListener('valueChange', (event) => {
             /** @type {RangeSliderHTMLElement} */
             const target = /** @type {RangeSliderHTMLElement} */ (event.target);
     
-            const limitingValue = sampleSubsceneConfigParams[_selectedSubsceneIndex].params !== null ? Math.floor(sampleSubsceneConfigParams[_selectedSubsceneIndex].params.minTimeframeLength / 1000) + 2 : 60;
+            const limitingValue = currentSubsceneParams !== null ? Math.floor(currentSubsceneParams.minTimeframeLength / 1000) + 2 : 60;
             if (target.value <= limitingValue) {
-                if (sampleSubsceneConfigParams[_selectedSubsceneIndex].params) {
-                    sampleSubsceneConfigParams[_selectedSubsceneIndex].params.maxTimeframeLength = limitingValue * 1000;
+                if (currentSubsceneParams) {
+                    currentSubsceneParams.maxTimeframeLength = limitingValue * 1000;
                 }
                 target.value = limitingValue;
             } else {
-                if (sampleSubsceneConfigParams[_selectedSubsceneIndex].params) {
-                    sampleSubsceneConfigParams[_selectedSubsceneIndex].params.maxTimeframeLength = target.value * 1000;
+                if (currentSubsceneParams) {
+                    currentSubsceneParams.maxTimeframeLength = target.value * 1000;
                 }
             }
     
@@ -441,11 +465,13 @@ class SampleCardHTMLElement extends HTMLElement {
         maxTimeframeElement.max = 60 * 60;
         maxTimeframeElement.scaleUnitLabel = 's';
         maxTimeframeElement.step = 10;
-        maxTimeframeElement.value = sampleSubsceneConfigParams[_selectedSubsceneIndex].params !== null ? Math.floor(sampleSubsceneConfigParams[_selectedSubsceneIndex].params.maxTimeframeLength / 1000) : 120;
+        maxTimeframeElement.value = currentSubsceneParams !== null ? Math.floor(currentSubsceneParams.maxTimeframeLength / 1000) : 120;
     
-        sampleContainer.appendChild(maxTimeframeElement);
+        accordionBodyElement.appendChild(maxTimeframeElement);
     
-        // groupHTMLParent.appendChild(sampleContainer);
+        
+        
+        
         return sampleContainer;
     }
 }
