@@ -17,7 +17,7 @@ class Processor:
         self.messages_for_polling = messages_for_polling
         self.app = Flask(__name__, static_folder='webapp/src')
         self.setup_routes()
-        self.app.run()
+        self.app.run(host='0.0.0.0', port=5000)
 
     def process_json_from_file(self):
         if self.is_already_processing:
