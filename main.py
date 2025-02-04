@@ -1,5 +1,6 @@
 import json
 import multiprocessing
+import os
 import queue
 from typing import List
 
@@ -8,15 +9,16 @@ from processor_functions import log_for_polling, process_json, \
 from flask import Flask, request, jsonify, send_from_directory
 
 
-
 class Processor:
 
-    is_already_processing = False
-
-    def __init__(self, messages_for_polling):
-        self.messages_for_polling = messages_for_polling
+    def __init__(self, _messages_for_polling):
+        self.saved_scenes_config_filename = "saved_scenes_config.json"
+        self.is_already_processing = False
+        self.messages_for_polling = _messages_for_polling
         self.app = Flask(__name__, static_folder='webapp/src')
         self.setup_routes()
+
+    def start_server(self):
         self.app.run(host='0.0.0.0', port=5000)
 
     def process_json_from_file(self):
@@ -24,10 +26,10 @@ class Processor:
             return
 
         with open("currentConfig.json", "r") as file:
-            log_for_polling("Parsing json config file...")
+            log_for_polling("Parsing json config file...", self.messages_for_polling)
             json_data = json.load(file)
             self.is_already_processing = True
-            process_json(json_data)
+            process_json(json_data, self.messages_for_polling)
             self.is_already_processing = False
 
     def run(self, debug=False):
@@ -53,7 +55,7 @@ class Processor:
             self.is_already_processing = True
 
             process.start()
-            process.join()
+            # process.join()
             self.is_already_processing = False
 
             # process_json(data)
@@ -61,12 +63,39 @@ class Processor:
         else:
             return jsonify({"message": "Invalid JSON"}), 400
 
+    def save_user_scenes_config(self):
+        if not request.is_json:
+            return {"error": "Request must be JSON"}, 400
+
+        data = request.get_json()
+        if not data:
+            return jsonify({"message": "Invalid JSON"}), 400
+
+        try:
+            with open(self.saved_scenes_config_filename, "w") as file:
+                json.dump(data, file)
+            return jsonify({"message": "JSON data saved successfully"}), 200
+        except Exception as e:
+            return jsonify({"error": f"Failed to save JSON: {str(e)}"}), 500
+
+    def load_user_scenes_config(self):
+        if not os.path.exists(self.saved_scenes_config_filename):
+            return jsonify({"error": "File not found"}), 404
+
+        try:
+            with open(self.saved_scenes_config_filename, "r") as file:
+                data = json.load(file)
+            return jsonify(data), 200
+        except json.JSONDecodeError:
+            return jsonify({"error": "Invalid JSON format in file"}), 500
+        except Exception as e:
+            return jsonify({"error": f"Failed to read JSON: {str(e)}"}), 500
+
     def serve_status(self):
         with messages_lock:  # Ensure thread-safe access to messages_for_polling
             # Try to get the latest messages from the queue
             print(self.messages_for_polling)
             return jsonify(list(self.messages_for_polling))
-
 
     def setup_routes(self):
         @self.app.route('/')
@@ -81,8 +110,16 @@ class Processor:
         def handle_post_route():
             return self.handle_post()
 
+        @self.app.route('/save_user_scenes_config', methods=['POST'])
+        def save_user_scenes_config_route():
+            return self.save_user_scenes_config()
+
+        @self.app.route('/load_user_scenes_config', methods=['GET'])
+        def load_user_scenes_config_route():
+            return self.load_user_scenes_config()
+
         @self.app.route('/serve_status')
-        def serve_status():
+        def serve_status_route():
             return self.serve_status()
 
 
@@ -90,4 +127,5 @@ if __name__ == '__main__':
     with multiprocessing.Manager() as manager:
         messages_for_polling = manager.list(['Hello'])
         app_instance = Processor(messages_for_polling)
+        app_instance.start_server()
         # process_json_from_file()

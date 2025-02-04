@@ -472,29 +472,48 @@ function generateCurrentConfigForSaveToDisk() {
     };
 }
 
-function saveConfigToDisk(){
+async function saveConfigToDisk(){
     const json = generateCurrentConfigForSaveToDisk();
     if(!json){
         return;
     }
     console.log(json);
 
-    /** @type {string | undefined} */
-    const currentJson = localStorage.getItem('scenesConfig');
-    
+    const currentJsonRequest = await fetch('/load_user_scenes_config',{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).catch(error => console.error('Error:', error));
 
-    if(currentJson){
+
+    if(currentJsonRequest && currentJsonRequest.status >= 200 && currentJsonRequest.status < 300){
+
         /** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
-        const currentParsedJson =  JSON.parse(localStorage.getItem('scenesConfig'));
+        const currentParsedJson = await currentJsonRequest.json();
+
+
         const existingSavedConfigSubsceneIndex = currentParsedJson.findIndex(currentParsedJsonItem => currentParsedJsonItem.subsceneLabel === json.subsceneLabel);
         if(existingSavedConfigSubsceneIndex > -1){
             currentParsedJson[existingSavedConfigSubsceneIndex] = json;
         } else {
             currentParsedJson.push(json)
         }
-        localStorage.setItem('scenesConfig', JSON.stringify(currentParsedJson));
+        await fetch('/save_user_scenes_config',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(currentParsedJson)
+        }).catch(error => console.error('Error:', error));
     } else {
-        localStorage.setItem('scenesConfig', JSON.stringify([json]));
+        await fetch('/save_user_scenes_config',{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify([json])
+        }).catch(error => console.error('Error:', error));
     }
 
 }
@@ -507,18 +526,22 @@ function onSelectedSubscene(selectedSubsceneLabel){
  * 
  * @param {string} sceneLabel 
  */
-function loadConfigFromDisk(sceneLabel){
+async function loadConfigFromDisk(sceneLabel){
 
-    
-    const lsItem = localStorage.getItem('scenesConfig');
+    const currentJsonRequest = await fetch('/load_user_scenes_config',{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).catch(error => console.error('Error:', error));
 
-    if(!lsItem){
+
+    if(!(currentJsonRequest && currentJsonRequest.status >= 200 && currentJsonRequest.status < 300)){
         return;
     }
 
-    
     /** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
-    const json =  JSON.parse(lsItem);
+    const json = await currentJsonRequest.json();
 
     const savedSubscene = json.find(jsonItem => jsonItem.subsceneLabel === sceneLabel);
 
@@ -619,24 +642,33 @@ function pollStatusAt() {
     
 }
 
-const lsItem = localStorage.getItem('scenesConfig');
-if(lsItem){
+
+
+
+
+async function loadUserScenesConfig(){
+    const currentJsonRequest = await fetch('/load_user_scenes_config',{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).catch(error => console.error('Error:', error));
+
+
+    if(!(currentJsonRequest && currentJsonRequest.status >= 200 && currentJsonRequest.status < 300)){
+        return;
+    }
+
     /** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
-    const savedSubscenes =  JSON.parse(lsItem);
+    const savedSubscenes = await currentJsonRequest.json();
     savedSubscenes.forEach(subscene => {
         const option = document.createElement('option');
         option.innerText = subscene.subsceneLabel;
         option.value = subscene.subsceneLabel;
         ctas.savedSubscenesSelector.append(option)
     })
+    
 }
-
-
-
-/** @type {ExportableSceneSamplesConfigForSaveToDisk[]} */
-const json =  JSON.parse(lsItem);
-
-
 
 /**
  * @param {SoundSceneConfig[]} config
@@ -647,6 +679,7 @@ function initApp(config) {
 }
 
 loadConfig().then((config) => {
+    loadUserScenesConfig().then();
     initApp(config)
     addCtaEventListeners();
     pollStatusAt();
