@@ -353,7 +353,7 @@ def process_json(jsonData, messages_for_polling):
     empty_log_for_polling(messages_for_polling)
 
     PROCESSING_BIT_DEPTH = 32
-    PROCESSING_SAMPLE_RATE = 44100
+    PROCESSING_SAMPLE_RATE = 96000
 
     FINAL_TRACK_BIT_DEPTH = jsonData["bitDepth"]
     FINAL_TRACK_SAMPLE_RATE = jsonData["sampleRate"]
