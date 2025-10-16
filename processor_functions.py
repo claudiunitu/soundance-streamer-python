@@ -166,6 +166,11 @@ def create_soundtrack(
     processed_concatenated_sample.set_frame_rate(sample_rate)
     processed_concatenated_sample.set_sample_width(translate_bit_depth_for_pydub(bit_depth))
 
+    # setting a total track length less than maximum sample window length will cause undesired behavior
+    for timing_window in timing_windows:
+        if timing_window["params"]["minTimeframeLengthMs"] >= desired_track_length_milliseconds or timing_window["params"]["maxTimeframeLengthMs"] >= desired_track_length_milliseconds:
+            raise Exception("cannot accept total track length to be less than timeframe min or timeframe max")
+
     # fill the mapping array with maximum elements that the algorithm can possibly fill
     # (if it always chooses minimum random intervals when it splits originalConcatenatedSample into segments )
     min_sample_segment_timeframe_milliseconds_from_all_timeframes = timing_windows[0]["params"]["minTimeframeLengthMs"]
@@ -372,28 +377,32 @@ def process_json(jsonData, messages_for_polling):
         current_sample_concat_overlay_milliseconds = current_sample_data_config["concatOverlayMs"]
         current_sample_variations_filepaths = current_sample_data_config["variationFilePath"]
 
-        soundtrack = create_soundtrack(
-            samples_variations_filenames=current_sample_variations_filepaths,
-            timing_windows=current_sample_data_config["timingWindows"],
-            max_length_seconds=final_length_seconds,
-            sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds / 1000),
-            sample_stitching_method=current_sample_stitching_method,
-            bit_depth=PROCESSING_BIT_DEPTH,  # set maximum bit depth for processing
-            sample_rate=PROCESSING_SAMPLE_RATE,
-            messages_for_polling = messages_for_polling
-        )
+        try:
+            soundtrack = create_soundtrack(
+                samples_variations_filenames=current_sample_variations_filepaths,
+                timing_windows=current_sample_data_config["timingWindows"],
+                max_length_seconds=final_length_seconds,
+                sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds / 1000),
+                sample_stitching_method=current_sample_stitching_method,
+                bit_depth=PROCESSING_BIT_DEPTH,  # set maximum bit depth for processing
+                sample_rate=PROCESSING_SAMPLE_RATE,
+                messages_for_polling = messages_for_polling
+            )
 
-        # try to normalize down each track take into consideration maximum number
-        # of tracks that will be combined. Use -1db for each new track that will be overlaid.
-        # This is not bulletproof, but it reduces the risk of final track clipping
-        # soundtrack = soundtrack.apply_gain(-number_of_tracks)
+            # try to normalize down each track take into consideration maximum number
+            # of tracks that will be combined. Use -1db for each new track that will be overlaid.
+            # This is not bulletproof, but it reduces the risk of final track clipping
+            # soundtrack = soundtrack.apply_gain(-number_of_tracks)
 
-        temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
-        log_for_polling("Exporting temporary track: {temp_soundtrack_filepath} ...".format(
-            temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
-        soundtrack.export(temp_soundtrack_filepath, format="wav")
-        log_for_polling("Successfully exported temporary track: {temp_soundtrack_filepath}".format(
-            temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
+            temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
+            log_for_polling("Exporting temporary track: {temp_soundtrack_filepath} ...".format(
+                temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
+            soundtrack.export(temp_soundtrack_filepath, format="wav")
+            log_for_polling("Successfully exported temporary track: {temp_soundtrack_filepath}".format(
+                temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
+        except Exception as e:
+            log_for_polling("Error creating soundtrack: {error}".format(error=str(e)), messages_for_polling)
+            return
 
     log_for_polling("Calculating the risk of clipping after mixing all tracks", messages_for_polling)
     all_tracks_max_peaks = [0.0] * number_of_tracks
