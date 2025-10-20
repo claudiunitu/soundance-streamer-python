@@ -21,16 +21,16 @@ class Processor:
     def start_server(self):
         self.app.run(host='0.0.0.0', port=5000)
 
-    def process_json_from_file(self):
-        if self.is_already_processing:
-            return
-
-        with open("currentConfig.json", "r") as file:
-            log_for_polling("Parsing json config file...", self.messages_for_polling)
-            json_data = json.load(file)
-            self.is_already_processing = True
-            process_json(json_data, self.messages_for_polling)
-            self.is_already_processing = False
+    # def process_json_from_file(self):
+    #     if self.is_already_processing:
+    #         return
+    #
+    #     with open("currentConfig.json", "r") as file:
+    #         log_for_polling("Parsing json config file...", self.messages_for_polling)
+    #         json_data = json.load(file)
+    #         self.is_already_processing = True
+    #         process_json(json_data, self.messages_for_polling)
+    #         self.is_already_processing = False
 
     def run(self, debug=False):
         self.app.run(debug=debug)

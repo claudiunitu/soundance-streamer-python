@@ -342,7 +342,7 @@ function removeCurrentSliders() {
  * @returns {ExportableSceneSamplesConfig[]}
  */
 function generateCurrentConfigJsonForScene(currentScene) {
-    return currentScene.samples.map((sample, sampleIndex) => {
+    const r=  currentScene.samples.map((sample, sampleIndex) => {
 
         const timingWindows = [{
             startAt: 0,
@@ -368,6 +368,7 @@ function generateCurrentConfigJsonForScene(currentScene) {
     })
         // do not add to export file the samples with max volume = 0
         .filter(mappedSample => mappedSample.timingWindows.some(timingWindow => timingWindow.params.maxVolRatio !== 0))
+        return r;
 }
 
 function generateCurrentConfigJSON(){
@@ -477,7 +478,6 @@ async function saveConfigToDisk(){
     if(!json){
         return;
     }
-    console.log(json);
 
     const currentJsonRequest = await fetch('/load_user_scenes_config',{
         method: 'GET',
@@ -562,7 +562,7 @@ async function loadConfigFromDisk(sceneLabel){
                 const isTFmaxChanged = loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength !== foundSavedSampleConfig.subsceneWindow.config.maxTimeframeLength;
 
                 
-                
+
                 
                 loadedSample.sampleSubsceneConfigParams.startAt = foundSavedSampleConfig.subsceneWindow.startAt;
                 
@@ -591,14 +591,14 @@ async function loadConfigFromDisk(sceneLabel){
                     /** @type {RangeSliderHTMLElement} */
                     const sampleTimeframeMinElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.timeframe-min-slider');
                     loadedSample.sampleSubsceneConfigParams.config.minTimeframeLength = foundSavedSampleConfig.subsceneWindow.config.minTimeframeLength;
-                    sampleTimeframeMinElement.value = loadedSample.sampleSubsceneConfigParams.config.minTimeframeLength;
+                    sampleTimeframeMinElement.value = Math.floor(loadedSample.sampleSubsceneConfigParams.config.minTimeframeLength/1000);
                     sampleTimeframeMinElement.dispatchEvent(new Event('valueChange'));
                 }
                 if(isTFmaxChanged){
                     /** @type {RangeSliderHTMLElement} */
                     const sampleTimeframeMaxElement = /** @type {RangeSliderHTMLElement} */ document.querySelectorAll('sample-card')[sampleIndex].shadowRoot.querySelector('.timeframe-max-slider');
                     loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength = foundSavedSampleConfig.subsceneWindow.config.maxTimeframeLength;
-                    sampleTimeframeMaxElement.value = loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength;
+                    sampleTimeframeMaxElement.value = Math.floor(loadedSample.sampleSubsceneConfigParams.config.maxTimeframeLength/1000);
                     sampleTimeframeMaxElement.dispatchEvent(new Event('valueChange'));
                 }
             }

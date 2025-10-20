@@ -7,6 +7,7 @@ import time
 import warnings
 from pydub.utils import ratio_to_db, db_to_float
 from pydub import AudioSegment
+from multiprocessing import Pool, cpu_count
 
 
 class SampleSplittingSegmentMap:
@@ -349,6 +350,41 @@ def audio_format_to_file_extension(audio_format: str):
         return "wav"
 
 
+def process_single_track(args):
+    i, number_of_tracks, config, final_length_seconds, PROCESSING_SAMPLE_RATE, PROCESSING_BIT_DEPTH, messages_for_polling = args
+
+
+    from processor_functions import create_soundtrack  # import inside if needed
+
+    log_for_polling("Processing track: " + str(i + 1) + " of " + str(number_of_tracks), messages_for_polling)
+
+    try:
+        soundtrack = create_soundtrack(
+            samples_variations_filenames=config["variationFilePath"],
+            timing_windows=config["timingWindows"],
+            max_length_seconds=final_length_seconds,
+            sample_concat_overlay_seconds=int(config["concatOverlayMs"] / 1000),
+            sample_stitching_method=config["stitchingMethod"],
+            bit_depth=PROCESSING_BIT_DEPTH,
+            sample_rate=PROCESSING_SAMPLE_RATE,
+            messages_for_polling=messages_for_polling
+        )
+        # try to normalize down each track take into consideration maximum number
+        # of tracks that will be combined. Use -1db for each new track that will be overlaid.
+        # This is not bulletproof, but it reduces the risk of final track clipping
+        # soundtrack = soundtrack.apply_gain(-number_of_tracks)
+
+        temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
+        log_for_polling("Exporting temporary track: {temp_soundtrack_filepath} ...".format(
+            temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
+        soundtrack.export(temp_soundtrack_filepath, format="wav")
+        log_for_polling("Successfully exported temporary track: {temp_soundtrack_filepath}".format(
+            temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
+    except Exception as e:
+        log_for_polling("Error creating soundtrack: {error}".format(error=str(e)), [])
+        return
+    # Return the generated AudioSegment
+    return i, soundtrack
 def process_json(jsonData, messages_for_polling):
     empty_log_for_polling(messages_for_polling)
 
@@ -364,45 +400,23 @@ def process_json(jsonData, messages_for_polling):
     final_track = AudioSegment.silent(duration=final_length_seconds * 1000)
     final_track.set_frame_rate(PROCESSING_SAMPLE_RATE)
     final_track.set_sample_width(translate_bit_depth_for_pydub(PROCESSING_BIT_DEPTH))
-    normalized_processed_sound_tracks: List[AudioSegment] = []
 
     number_of_tracks = len(samples_data_config)
 
     log_for_polling("Will process {number_of_tracks} tracks...".format(number_of_tracks=number_of_tracks), messages_for_polling)
-    for i in range(number_of_tracks):
-        log_for_polling("Processing track: " + str(i + 1) + " of " + str(number_of_tracks), messages_for_polling)
 
-        current_sample_data_config = samples_data_config[i]
-        current_sample_stitching_method = current_sample_data_config["stitchingMethod"]
-        current_sample_concat_overlay_milliseconds = current_sample_data_config["concatOverlayMs"]
-        current_sample_variations_filepaths = current_sample_data_config["variationFilePath"]
 
-        try:
-            soundtrack = create_soundtrack(
-                samples_variations_filenames=current_sample_variations_filepaths,
-                timing_windows=current_sample_data_config["timingWindows"],
-                max_length_seconds=final_length_seconds,
-                sample_concat_overlay_seconds=int(current_sample_concat_overlay_milliseconds / 1000),
-                sample_stitching_method=current_sample_stitching_method,
-                bit_depth=PROCESSING_BIT_DEPTH,  # set maximum bit depth for processing
-                sample_rate=PROCESSING_SAMPLE_RATE,
-                messages_for_polling = messages_for_polling
-            )
 
-            # try to normalize down each track take into consideration maximum number
-            # of tracks that will be combined. Use -1db for each new track that will be overlaid.
-            # This is not bulletproof, but it reduces the risk of final track clipping
-            # soundtrack = soundtrack.apply_gain(-number_of_tracks)
+    # --- Parallel processing ---
+    args_list = [
+        (i, number_of_tracks, samples_data_config[i], final_length_seconds, PROCESSING_SAMPLE_RATE, PROCESSING_BIT_DEPTH, messages_for_polling)
+        for i in range(number_of_tracks)
+    ]
 
-            temp_soundtrack_filepath = "generated/temp-track-{track_index}.tmp".format(track_index=i)
-            log_for_polling("Exporting temporary track: {temp_soundtrack_filepath} ...".format(
-                temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
-            soundtrack.export(temp_soundtrack_filepath, format="wav")
-            log_for_polling("Successfully exported temporary track: {temp_soundtrack_filepath}".format(
-                temp_soundtrack_filepath=temp_soundtrack_filepath), messages_for_polling)
-        except Exception as e:
-            log_for_polling("Error creating soundtrack: {error}".format(error=str(e)), messages_for_polling)
-            return
+    with Pool(processes=max(1, min(cpu_count() - 1, 4))) as pool:
+        for _ in pool.imap_unordered(process_single_track, args_list):
+            pass # just wait for completion, results already handled inside
+
 
     log_for_polling("Calculating the risk of clipping after mixing all tracks", messages_for_polling)
     all_tracks_max_peaks = [0.0] * number_of_tracks
