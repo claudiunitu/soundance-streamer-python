@@ -2614,6 +2614,171 @@
                     "maxTimeframeLength": 720000
                 }
             },
+
+
+            {
+                "label": "White Rain - Sub-Bass",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/0a.ogg",
+                    "sound-samples/custom/white-rain/0b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 3500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - Low-Bass",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/1a.ogg",
+                    "sound-samples/custom/white-rain/1b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - Bass",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/2a.ogg",
+                    "sound-samples/custom/white-rain/2b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - High Bass",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/3a.ogg",
+                    "sound-samples/custom/white-rain/3b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - Low Mids",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/4a.ogg",
+                    "sound-samples/custom/white-rain/4b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - Mids",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/5a.ogg",
+                    "sound-samples/custom/white-rain/5b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 7000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - High Mids",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/6a.ogg",
+                    "sound-samples/custom/white-rain/6b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 6500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - Low Treble",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/7a.ogg",
+                    "sound-samples/custom/white-rain/7b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - Treble",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/8a.ogg",
+                    "sound-samples/custom/white-rain/8b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 5000,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+            {
+                "label": "White Rain - High Treble",
+                "variationNames": [
+                    "sound-samples/custom/white-rain/9a.ogg",
+                    "sound-samples/custom/white-rain/9b.ogg"
+                ],
+                "stitchingMethod": "JOIN_WITH_OVERLAY",
+                "concatOverlayMs": 4500,
+                "config": {
+                    "minVol": 0,
+                    "maxVol": 0,
+                    "currentVol": 0,
+                    "minTimeframeLength": 360000,
+                    "maxTimeframeLength": 720000
+                }
+            },
+
+
+
             {
                 "label": "Rain on a tent - Sub-Bass",
                 "variationNames": [
